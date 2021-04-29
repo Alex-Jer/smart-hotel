@@ -6,7 +6,7 @@ html {
 .bg-image-login {
   /* Definir imagem e aplicando um filtro para a mesma ficar mais escura */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://capmagellan.com/wp-content/uploads/2017/04/170405-Leiria-photo-Gil-Quintino.jpg');
+    url("https://capmagellan.com/wp-content/uploads/2017/04/170405-Leiria-photo-Gil-Quintino.jpg");
 
   /* Efeito de Desfoque à Imagem */
   filter: blur(5px);
