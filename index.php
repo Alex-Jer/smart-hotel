@@ -1,7 +1,7 @@
 <?php
 $users = array(
-    array("admin", "admin1"),
-    array("regular", "regular1")
+    array("admin", "admin"),
+    array("regular", "regular")
 );
 
 $login = "none";
