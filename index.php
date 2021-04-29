@@ -1,3 +1,33 @@
+<?php
+$users = array(
+    array("admin", "admin1"),
+    array("regular", "regular1")
+);
+
+$login = "none";
+
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    foreach ($users as $user) {
+        if ($_POST['username'] == $user[0] && $_POST['password'] == $user[1]) {
+            $login = "done";
+            echo "Credenciais corretas";
+            echo "Username: " . $_POST['username'] . "<br>";
+            echo "Password: " . $_POST['password'] . "<br>";
+            session_start();
+            $_SESSION["username"] = $_POST['username'];
+            $_SESSION["password"] = $_POST['password'];
+            header("Location: dashboard.php");
+        } else {
+            $login = "failed";
+        }
+    }
+}
+
+if ($login == "failed") {
+    echo "<div id='divError' class='alert alert-danger' role='alert'>O nome de usuário e a senha fornecidos não correspondem às informações em nossos registros. Verifique-as e tente novamente.</div>";
+}
+?>
+
 <!doctype html>
 <html lang="pt">
 

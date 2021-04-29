@@ -27,19 +27,18 @@ html {
 
 #login-container {
   position: absolute;
-  top: 35%;
+  top: 30%;
   text-align: center;
 }
 
 #inUsername,
-#inPassword,
-#btnLogin {
+#inPassword {
   margin-top: 5px;
 }
 
 #btnLogin {
   width: 50%;
-  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 #frmLogin {
@@ -48,4 +47,8 @@ html {
   background: #fff;
   padding: 50px;
   box-shadow: 0px 0px 50px 5px #000;
+}
+
+#divError {
+  z-index: 5;
 }
