@@ -12,8 +12,7 @@
         <!-- sidebar header -->
         <div class="flex items-center justify-between flex-shrink-0 p-2" :class="{'lg:justify-center': !isSidebarOpen}">
           <span class="p-2 text-xl font-semibold leading-8 tracking-wider uppercase whitespace-nowrap">
-            <span :class="{'lg:hidden': isSidebarOpen}">HI</span>
-            <span :class="{'lg:hidden': !isSidebarOpen}">HOTEL INTELIGENTE</span>
+            <span :class="{'lg:hidden': !isSidebarOpen}">Smart Hotel</span>
           </span>
           <button @click="toggleSidbarMenu()" class="p-2 rounded-md lg:hidden">
             <svg class="w-6 h-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
