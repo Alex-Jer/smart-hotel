@@ -8,7 +8,7 @@
   <!-- Styles & Tailwind -->
   <link rel="stylesheet" href="css/tailwind.css" />
   <link rel="stylesheet" href="css/styles.css" />
-  <title>Dashboard - Hotel Inteligente</title>
+  <title>Tabela - Hotel Inteligente</title>
 </head>
 
 <body>
