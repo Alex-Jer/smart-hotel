@@ -1,0 +1,16 @@
+# Considerar a pasta /public como root
+DirectoryIndex /public/index.php
+RewriteEngine On 
+RewriteRule ^$ public/index.php [L]
+
+# Se as seguintes condições são verdadeiras, então reescreve o URL:
+# Se o nome do ficheiro não é uma diretoria,
+RewriteCond %{REQUEST_FILENAME} !-d
+# e se o nome do ficheiro não é um ficheiro normal existente,
+RewriteCond %{REQUEST_FILENAME} !-f
+# e se o nome do ficheiro não é um link simbólico,
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^((?!public/views).*)$ public/views/$1 [L,NC]
+
+# Omitir a extensão .php no URL
+Options +MultiViews
