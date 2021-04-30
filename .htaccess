@@ -10,7 +10,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 # e se o nome do ficheiro não é um link simbólico,
 RewriteCond %{REQUEST_FILENAME} !-l
-RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+RewriteRule ^((?!public/views).*)$ public/views/$1 [L,NC]
 
 # Omitir a extensão .php no URL
 Options +MultiViews

@@ -16,7 +16,7 @@
     <div class="flex h-screen overflow-y-hidden bg-white dark:bg-dark" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
 
       <!-- Sidebar e Topbar -->
-      <?php include 'layout/sidebar.php'; ?>
+      <?php include '../layout/sidebar.php'; ?>
 
       <!-- Main content -->
       <main class="flex-1 max-h-full p-5 overflow-hidden overflow-y-scroll">
@@ -89,24 +89,12 @@
       </main>
 
       <!-- Footer -->
-      <?php include 'layout/footer.php' ?>
+      <?php include '../layout/footer.php' ?>
 
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-  <script>
-    const setup = () => {
-      return {
-        loading: true,
-        isSidebarOpen: false,
-        toggleSidbarMenu() {
-          this.isSidebarOpen = !this.isSidebarOpen
-        },
-        isSettingsPanelOpen: false,
-        isSearchBoxOpen: false,
-      }
-    }
-  </script>
+  <script src="/public/js/sidebar.js"></script>
 </body>
 
 </html>
