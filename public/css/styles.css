@@ -33,3 +33,17 @@ html {
 #divError {
   z-index: 5;
 }
+
+.not-found {
+  font-family: 'Whitney SSm A', 'Whitney SSm B', 'Helvetica Neue', Helvetica, Arial, Sans-Serif;
+}
+
+.error-text {
+  font-size: 130px;
+}
+
+@media (min-width: 768px) {
+  .error-text {
+    font-size: 220px;
+  }
+}

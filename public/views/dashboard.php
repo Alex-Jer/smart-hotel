@@ -1,6 +1,10 @@
 <?php
-// $path = $_SERVER['DOCUMENT_ROOT'] . "public/src/login.php";
-// include_once($path);
+//* $path = $_SERVER['DOCUMENT_ROOT'] . "public/src/login.php";
+//* include_once($path);
+session_start();
+if (! isset($_SESSION['username'])) {
+    header('Location: 403');
+}
 ?>
 
 <!DOCTYPE html>
@@ -10,15 +14,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Hotel Inteligente</title>
   <!-- Styles & Tailwind -->
   <link rel="stylesheet" href="/public/css/tailwind.css" />
   <link rel="stylesheet" href="/public/css/styles.css" />
-  <title>Dashboard - Hotel Inteligente</title>
 </head>
 
 <body>
   <div>
-    <div class="flex h-screen overflow-y-hidden bg-white dark:bg-dark" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex h-screen overflow-y-hidden bg-white dark:bg-dark" x-data="setup()"
+      x-init="$refs.loading.classList.add('hidden')">
 
       <!-- Sidebar e Topbar -->
       <?php include 'templates/sidebar.php'; ?>
@@ -26,7 +31,8 @@
       <!-- Main content -->
       <main class="flex-1 max-h-full p-5 overflow-hidden overflow-y-scroll">
         <!-- Main content header -->
-        <div class="flex flex-col items-start justify-between pb-6 space-y-4 border-b dark:border-darker dark:text-light lg:items-center lg:space-y-0 lg:flex-row">
+        <div
+          class="flex flex-col items-start justify-between pb-6 space-y-4 border-b dark:border-darker dark:text-light lg:items-center lg:space-y-0 lg:flex-row">
           <h1 class="text-2xl font-semibold whitespace-nowrap">Dashboard</h1>
         </div>
 
@@ -39,16 +45,20 @@
                 <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
                   <thead class="bg-gray-50 dark:bg-darker">
                     <tr>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Name
                       </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Title
                       </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Status
                       </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Role
                       </th>
                       <th scope="col" class="relative px-6 py-3">
@@ -62,7 +72,9 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                           <div class="flex items-center">
                             <div class="flex-shrink-0 w-10 h-10">
-                              <img class="w-10 h-10 rounded-full" src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4" alt="" />
+                              <img class="w-10 h-10 rounded-full"
+                                src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
+                                alt="" />
                             </div>
                             <div class="ml-4">
                               <div class="text-sm font-medium text-gray-900 dark:text-gray-300">Ahmed Kamel</div>
@@ -75,7 +87,8 @@
                           <div class="text-sm text-gray-500">Optimization</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                          <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full dark:bg-green-300">
+                          <span
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full dark:bg-green-300">
                             Active
                           </span>
                         </td>

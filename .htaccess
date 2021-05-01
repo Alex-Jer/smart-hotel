@@ -11,6 +11,8 @@ Options -Indexes
 # Reescreve o URL
 RewriteRule ^dashboard$ /public/views/dashboard.php [L]
 RewriteRule ^table$ /public/views/table.php [L]
+RewriteRule ^403$ /public/views/403.html [L]
+RewriteRule ^logout$ /public/src/logout.php [L]
 
 # Se as seguintes condições são verdadeiras, então reescreve o URL:
 # Se o nome do ficheiro não é uma diretoria,
