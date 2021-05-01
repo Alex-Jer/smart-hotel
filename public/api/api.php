@@ -11,8 +11,8 @@ if ($method_type == 'POST') {
       case 'rooms':
         echo 'Region: Rooms' . PHP_EOL;
         if (isset($_POST['number']) && isset($_POST['sensor']) && isset($_POST['value']) && isset($_POST['time'])) {
-          echo file_put_contents("data/rooms/{$_POST['number']}/{$_POST['sensor']}.txt", "$_POST[time]" . ";" . "$_POST[value]");
-          echo file_put_contents("data/rooms/{$_POST['number']}/log-{$_POST['sensor']}.txt", "$_POST[time]" . ";" . "$_POST[value]" . PHP_EOL, FILE_APPEND);
+          echo file_put_contents("data/rooms/{$_POST['number']}/{$_POST['sensor']}/value.txt", "$_POST[time]" . ";" . "$_POST[value]");
+          echo file_put_contents("data/rooms/{$_POST['number']}/{$_POST['sensor']}/log.txt", "$_POST[time]" . ";" . "$_POST[value]" . PHP_EOL, FILE_APPEND);
         } else {
           echo 'ERRO: Dados em Falta!' . PHP_EOL;
         }
@@ -20,8 +20,8 @@ if ($method_type == 'POST') {
       case 'pool':
         echo 'Region: Pool' . PHP_EOL;
         if (isset($_POST['value']) && isset($_POST['time'])) {
-          echo file_put_contents("data/pool/temperature.txt", "$_POST[time]" . ";" . "$_POST[value]");
-          echo file_put_contents("data/pool/log.txt", "$_POST[time]" . ";" . "$_POST[value]" . PHP_EOL, FILE_APPEND);
+          echo file_put_contents("data/pool/temperature/value.txt", "$_POST[time]" . ";" . "$_POST[value]");
+          echo file_put_contents("data/pool/temperature/log.txt", "$_POST[time]" . ";" . "$_POST[value]" . PHP_EOL, FILE_APPEND);
         } else {
           echo 'ERRO: Dados em Falta!' . PHP_EOL;
         }
