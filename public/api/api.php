@@ -6,22 +6,34 @@ $method_type = $_SERVER['REQUEST_METHOD'];
 if ($method_type == 'POST') {
   echo 'recebido um post' . PHP_EOL;
   print_r($_POST);
-  if (isset($_POST['nome'])) {
-    switch ($_POST['nome']) {
-      case 'tempQuarto':
-        echo 'Sensor de Temperatura do Quarto';
-        if (isset($_POST['numQuarto']) && isset($_POST['valor']) && isset($_POST['hora'])) {
-          echo file_put_contents("files/temperatura/valor.txt", "$_POST[valor]");
-          echo file_put_contents("files/temperatura/hora.txt", "$_POST[hora]");
-          echo file_put_contents("files/temperatura/log.txt", "$_POST[hora]" . ";" . "$_POST[valor]" . PHP_EOL, FILE_APPEND);
+  if (isset($_POST['region'])) {
+    switch ($_POST['region']) {
+      case 'rooms':
+        echo 'Region: Rooms' . PHP_EOL;
+        if (isset($_POST['number']) && isset($_POST['sensor']) && isset($_POST['value']) && isset($_POST['time'])) {
+          $status = file_put_contents("data/rooms/{$_POST['number']}/{$_POST['sensor']}.txt", "$_POST[time]" . ";" . "$_POST[value]");
+          if ($status == false) {
+            echo 'ERRO: Dados não foram guardados!' . PHP_EOL;
+          }
+        } else {
+          echo 'ERRO: Dados em Falta!' . PHP_EOL;
         }
         break;
+      case 'pool':
+        echo 'Region: Pool' . PHP_EOL;
+        break;
+      case 'parking':
+        echo 'Region: Parking' . PHP_EOL;
+        break;
+      case 'rooftop':
+        echo 'Region: Rooftop' . PHP_EOL;
+        break;
       default:
-        echo 'ERRO: O Sensor/Atuador indicado não existe!';
+        echo 'ERRO: A região indicado não existe!' . PHP_EOL;
         break;
     }
   } else {
-    echo 'ERRO: Parâmetros inválidos';
+    echo 'ERRO: Parâmetros inválidos' . PHP_EOL;
   }
 } elseif ($method_type == 'GET') {
   echo 'recebido um get' . PHP_EOL;
