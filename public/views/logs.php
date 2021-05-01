@@ -1,4 +1,4 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . 'public/src/auth.php'; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/public/src/auth.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

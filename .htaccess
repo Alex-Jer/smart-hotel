@@ -11,7 +11,7 @@ Options -Indexes
 # Reescreve o URL
 RewriteRule ^api$ /public/api/api.php [L]
 RewriteRule ^dashboard$ /public/views/dashboard.php [L]
-RewriteRule ^history$ /public/views/history.php [L]
+RewriteRule ^logs$ /public/views/logs.php [L]
 RewriteRule ^table$ /public/views/table.php [L]
 RewriteRule ^403$ /public/views/403.html [L]
 RewriteRule ^logout$ /public/src/logout.php [L]
