@@ -16,7 +16,7 @@
     <div class="flex h-screen overflow-y-hidden bg-white dark:bg-dark" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">
 
       <!-- Sidebar e Topbar -->
-      <?php include 'layout/sidebar.php'; ?>
+      <?php include 'templates/sidebar.php'; ?>
 
       <!-- Main content -->
       <main class="flex-1 max-h-full p-5 overflow-hidden overflow-y-scroll">
@@ -89,7 +89,7 @@
       </main>
 
       <!-- Footer -->
-      <?php include 'layout/footer.php' ?>
+      <?php include 'templates/footer.php' ?>
 
     </div>
   </div>
