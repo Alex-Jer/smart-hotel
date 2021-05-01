@@ -9,17 +9,9 @@ Options +FollowSymLinks
 Options -Indexes
 
 # Reescreve o URL
+RewriteRule ^api$ /public/api/api.php [L]
 RewriteRule ^dashboard$ /public/views/dashboard.php [L]
+RewriteRule ^history$ /public/views/history.php [L]
 RewriteRule ^table$ /public/views/table.php [L]
 RewriteRule ^403$ /public/views/403.html [L]
 RewriteRule ^logout$ /public/src/logout.php [L]
-
-# Se as seguintes condições são verdadeiras, então reescreve o URL:
-# Se o nome do ficheiro não é uma diretoria,
-RewriteCond %{REQUEST_FILENAME} !-d
-# e se o nome do ficheiro não é um ficheiro normal existente,
-RewriteCond %{REQUEST_FILENAME} !-f
-# e se o nome do ficheiro não é um link simbólico,
-RewriteCond %{REQUEST_FILENAME} !-l
-# então reescreve o URL:
-RewriteRule ^((?!public/api).*)$ public/api/$1 [L,NC]
