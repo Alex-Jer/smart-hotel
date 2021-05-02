@@ -105,7 +105,7 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-  <script src="/public/js/sidebar.js"></script>
+  <script src="/public/js/script.js"></script>
 </body>
 
 </html>
