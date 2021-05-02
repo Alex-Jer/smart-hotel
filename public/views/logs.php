@@ -39,11 +39,11 @@
                     <tr>
                       <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                        Name
+                        Nome
                       </th>
                       <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                        Title
+                        Título
                       </th>
                       <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
@@ -54,7 +54,7 @@
                         Role
                       </th>
                       <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Edit</span>
+                        <span class="sr-only">Editar</span>
                       </th>
                     </tr>
                   </thead>
@@ -69,8 +69,8 @@
                                 alt="" />
                             </div>
                             <div class="ml-4">
-                              <div class="text-sm font-medium text-gray-900 dark:text-gray-300">Ahmed Kamel</div>
-                              <div class="text-sm text-gray-500">ahmed.kamel@example.com</div>
+                              <div class="text-sm font-medium text-gray-900 dark:text-gray-300">Nome</div>
+                              <div class="text-sm text-gray-500">exemplo@exemplo.com</div>
                             </div>
                           </div>
                         </td>
