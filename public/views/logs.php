@@ -15,8 +15,7 @@
 
 <body>
   <div>
-    <div class="flex h-screen overflow-y-hidden bg-white dark:bg-dark" x-data="setup()"
-      x-init="$refs.loading.classList.add('hidden')">
+    <div class="flex h-screen overflow-y-hidden bg-white dark:bg-dark">
 
       <!-- Sidebar e Topbar -->
       <?php include 'templates/sidebar.php'; ?>
@@ -60,7 +59,7 @@
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200 dark:bg-darker dark:divide-darker">
-                    <template x-for="i in 8" :key="i">
+                    <template>
                       <tr class="transition-all hover:bg-gray-100 dark:hover:bg-gray-900 hover:shadow-lg">
                         <td class="px-6 py-4 whitespace-nowrap">
                           <div class="flex items-center">
@@ -104,11 +103,8 @@
 
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
   <script src="/public/js/script.js"></script>
 </body>
 
-</html>
-</body>
 
 </html>
