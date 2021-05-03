@@ -5,8 +5,10 @@ if (isset($isRestricted)) {
 }
 
 $users = [
-    ['admin', 'admin'],
-    ['regular', 'regular'],
+    ['admin', 'admin', 'admin'],
+    ['admin2', 'admin2', 'admin'],
+    ['user', 'user', 'user'],
+    ['user2', 'user2', 'user'],
 ];
 
 $loginSuccess = null;
