@@ -128,7 +128,9 @@
           </div>
         </div>
 
-      </main <!-- Footer -->
+      </main>
+
+      <!-- Footer -->
       <?php include 'templates/footer.php' ?>
 
     </div>
