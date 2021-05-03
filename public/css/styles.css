@@ -14,7 +14,7 @@ main::-webkit-scrollbar {
 .bg-image-login {
   /* Definir imagem e aplicando um filtro para a mesma ficar mais escura */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://capmagellan.com/wp-content/uploads/2017/04/170405-Leiria-photo-Gil-Quintino.jpg');
+    url("https://capmagellan.com/wp-content/uploads/2017/04/170405-Leiria-photo-Gil-Quintino.jpg");
 
   /* Efeito de Desfoque à Imagem */
   filter: blur(5px);
@@ -43,7 +43,8 @@ main::-webkit-scrollbar {
 }
 
 .not-found {
-  font-family: 'Whitney SSm A', 'Whitney SSm B', 'Helvetica Neue', Helvetica, Arial, Sans-Serif;
+  font-family: "Whitney SSm A", "Whitney SSm B", "Helvetica Neue", Helvetica,
+    Arial, Sans-Serif;
 }
 
 .error-text {
@@ -119,4 +120,14 @@ main::-webkit-scrollbar {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+#divNumber1,
+#divNumber2 {
+  display: inline-block;
+}
+
+#divNumber2 {
+  font-size: 20px;
+  font-weight: 900;
 }

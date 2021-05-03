@@ -26,7 +26,7 @@ switch ($_GET['sensor']) {
     $title = "Humidade";
     break;
   case 'smoke';
-    $title = "Fumo";
+    $title = "Detetor de Fumo";
     break;
 }
 
@@ -41,7 +41,7 @@ switch ($_GET['region']) {
     $title = $title . " do Telhado";
     break;
   case 'rooms';
-    $title = $title . " do Quarto " . $_GET['number'];
+    $title = $title . " do Quarto ";
     break;
 }
 
@@ -75,7 +75,19 @@ switch ($_GET['region']) {
         </div>
 
         <!-- Table see (https://tailwindui.com/components/application-ui/lists/tables) -->
-        <h3 class="mt-6 text-xl dark:text-light"><?php echo $title ?></h3>
+        <div id="divNumber1">
+          <h3 class="mt-6 text-xl dark:text-light"><?php echo $title ?></h3>
+        </div>
+        <div id="divNumber2">
+          <select name="numbers" id="numbers">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
         <div class="flex flex-col mt-6">
           <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
