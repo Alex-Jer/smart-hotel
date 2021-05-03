@@ -10,10 +10,10 @@ switch ($_GET['sensor']) {
   case 'temperature';
     $title = "Temperatura";
     break;
-  case 'solar-battery';
+  case 'solar_battery';
     $title = "Bateria ";
     break;
-  case 'solar-panel';
+  case 'solar_panel';
     $title = "Painel Solar";
     break;
   case 'ac';

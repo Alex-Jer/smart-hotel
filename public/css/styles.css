@@ -110,3 +110,13 @@ main::-webkit-scrollbar {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
+
+.dropdown-content {
+  display: none;
+  min-width: 160px;
+  padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
