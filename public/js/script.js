@@ -57,15 +57,15 @@ if (
   // Responsável por tornar o interruptor do modo escuro responsive
   toggle.checked = true;
   toggleMobile.checked = true;
-  toggle.style.setProperty('--content-url', 'url(/public/svg/moon.svg)');
-  toggleMobile.style.setProperty('--content-url', 'url(/public/svg/moon.svg)');
+  toggle.style.setProperty('--content-url', 'url(../svg/moon.svg)');
+  toggleMobile.style.setProperty('--content-url', 'url(../svg/moon.svg)');
 } else {
   document.documentElement.classList.remove('dark');
   // Responsável por tornar o interruptor do modo escuro responsive
   toggle.checked = false;
   toggleMobile.checked = false;
-  toggle.style.setProperty('--content-url', 'url(/public/svg/star.svg)');
-  toggleMobile.style.setProperty('--content-url', 'url(/public/svg/star.svg)');
+  toggle.style.setProperty('--content-url', 'url(../svg/star.svg)');
+  toggleMobile.style.setProperty('--content-url', 'url(../svg/star.svg)');
 }
 
 // Interruptor/Botão do Modo Escuro
@@ -73,12 +73,12 @@ const toggleTheme = () => {
   if (localStorage.theme === 'dark') {
     localStorage.theme = 'light';
     document.documentElement.classList.remove('dark');
-    toggle.style.setProperty('--content-url', 'url(/public/svg/star.svg)');
-    toggleMobile.style.setProperty('--content-url', 'url(/public/svg/star.svg)');
+    toggle.style.setProperty('--content-url', 'url(../svg/star.svg)');
+    toggleMobile.style.setProperty('--content-url', 'url(../svg/star.svg)');
   } else {
     localStorage.theme = 'dark';
     document.documentElement.classList.add('dark');
-    toggle.style.setProperty('--content-url', 'url(/public/svg/moon.svg)');
-    toggleMobile.style.setProperty('--content-url', 'url(/public/svg/moon.svg)');
+    toggle.style.setProperty('--content-url', 'url(../svg/moon.svg)');
+    toggleMobile.style.setProperty('--content-url', 'url(../svg/moon.svg)');
   }
 };
