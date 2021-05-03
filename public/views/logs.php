@@ -32,16 +32,22 @@
         <div id="divNumber1">
           <h3 class="mt-6 text-xl dark:text-light"><?php echo $title ?></h3>
         </div>
-        <div id="divNumber2">
-          <select id="number" class="dark:bg-dark dark:text-light" name="number" onchange="OnSelectionChange()">
-            <option <?php if ($_GET['number'] == 1) echo "selected"; ?> value="1">1</option>
-            <option <?php if ($_GET['number'] == 2) echo "selected"; ?> value="2">2</option>
-            <option <?php if ($_GET['number'] == 3) echo "selected"; ?> value="3">3</option>
-            <option <?php if ($_GET['number'] == 4) echo "selected"; ?> value="4">4</option>
-            <option <?php if ($_GET['number'] == 5) echo "selected"; ?> value="5">5</option>
-            <option <?php if ($_GET['number'] == 6) echo "selected"; ?> value="6">6</option>
-          </select>
-        </div>
+        <?php
+        if ($_GET['region'] == 'rooms') {
+        ?>
+          <div id="divNumber2">
+            <select id="number" class="dark:bg-dark dark:text-light" name="number" onchange="OnSelectionChange()">
+              <option <?php if ($_GET['number'] == 1) echo "selected"; ?> value="1">1</option>
+              <option <?php if ($_GET['number'] == 2) echo "selected"; ?> value="2">2</option>
+              <option <?php if ($_GET['number'] == 3) echo "selected"; ?> value="3">3</option>
+              <option <?php if ($_GET['number'] == 4) echo "selected"; ?> value="4">4</option>
+              <option <?php if ($_GET['number'] == 5) echo "selected"; ?> value="5">5</option>
+              <option <?php if ($_GET['number'] == 6) echo "selected"; ?> value="6">6</option>
+            </select>
+          </div>
+        <?php
+        }
+        ?>
 
         <div class="flex flex-col mt-6">
           <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
