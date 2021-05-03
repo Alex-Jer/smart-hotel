@@ -44,8 +44,16 @@ switch ($_GET['region']) {
     $title = $title . " do Quarto ";
     break;
 }
-
 ?>
+
+<script>
+  function OnSelectionChange() {
+    var e = document.getElementById("number");
+    var number = e.options[e.selectedIndex].value;
+    var sensor = "<?php echo $_GET['sensor']; ?>";
+    window.location.replace("logs?region=rooms&number=" + number + "&sensor=" + sensor);
+  }
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,13 +87,13 @@ switch ($_GET['region']) {
           <h3 class="mt-6 text-xl dark:text-light"><?php echo $title ?></h3>
         </div>
         <div id="divNumber2">
-          <select name="numbers" id="numbers">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
+          <select id="number" name="number" onchange="OnSelectionChange()">
+            <option <?php if ($_GET['number'] == 1) echo "selected"; ?> value="1">1</option>
+            <option <?php if ($_GET['number'] == 2) echo "selected"; ?> value="2">2</option>
+            <option <?php if ($_GET['number'] == 3) echo "selected"; ?> value="3">3</option>
+            <option <?php if ($_GET['number'] == 4) echo "selected"; ?> value="4">4</option>
+            <option <?php if ($_GET['number'] == 5) echo "selected"; ?> value="5">5</option>
+            <option <?php if ($_GET['number'] == 6) echo "selected"; ?> value="6">6</option>
           </select>
         </div>
         <div class="flex flex-col mt-6">
