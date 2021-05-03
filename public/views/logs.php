@@ -1,4 +1,51 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . 'public/src/auth.php'; ?>
+<?php include_once '../src/auth.php';
+
+switch ($_GET['sensor']) {
+  case 'barrier';
+    $title = "Barreira";
+    break;
+  case 'lights';
+    $title = "Luzes";
+    break;
+  case 'temperature';
+    $title = "Temperatura";
+    break;
+  case 'solar-battery';
+    $title = "Bateria ";
+    break;
+  case 'solar-panel';
+    $title = "Painel Solar";
+    break;
+  case 'ac';
+    $title = "Ar Condicionado";
+    break;
+  case 'door';
+    $title = "Porta";
+    break;
+  case 'humidity';
+    $title = "Humidade";
+    break;
+  case 'smoke';
+    $title = "Fumo";
+    break;
+}
+
+switch ($_GET['region']) {
+  case 'parking';
+    $title = $title . " do Parque de Estacionamento";
+    break;
+  case 'pool';
+    $title = $title . " da Piscina";
+    break;
+  case 'rooftop';
+    $title = $title . " do Telhado";
+    break;
+  case 'rooms';
+    $title = $title . " do Quarto " . $_GET['number'];
+    break;
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +75,7 @@
         </div>
 
         <!-- Table see (https://tailwindui.com/components/application-ui/lists/tables) -->
-        <h3 class="mt-6 text-xl dark:text-light">Sensores</h3>
+        <h3 class="mt-6 text-xl dark:text-light"><?php echo $title ?></h3>
         <div class="flex flex-col mt-6">
           <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -37,51 +84,34 @@
                   <thead class="bg-gray-50 dark:bg-darker">
                     <tr>
                       <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                        Nome
+                        Data de Atualização
                       </th>
                       <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                        Título
-                      </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                        Status
-                      </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                        Role
-                      </th>
-                      <th scope="col" class="relative px-6 py-3">
-                        <span class="sr-only">Editar</span>
+                        Valor
                       </th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200 dark:bg-darker dark:divide-darker">
-                    <template>
-                      <tr class="transition-all hover:bg-gray-100 dark:hover:bg-gray-900 hover:shadow-lg">
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="flex items-center">
-                            <div class="flex-shrink-0 w-10 h-10">
-                              <img class="w-10 h-10 rounded-full" src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4" alt="" />
-                            </div>
-                            <div class="ml-4">
-                              <div class="text-sm font-medium text-gray-900 dark:text-gray-300">Nome</div>
-                              <div class="text-sm text-gray-500">exemplo@exemplo.com</div>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="text-sm text-gray-900 dark:text-gray-300">Regional Paradigm Technician</div>
-                          <div class="text-sm text-gray-500">Optimization</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full dark:bg-green-300">
-                            Active
-                          </span>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">Admin</td>
-                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                          <a href="#" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-300">Edit</a>
-                        </td>
-                      </tr>
-                    </template>
+                    <?php
+                    if ($_GET['region'] == 'rooms') {
+                      $file = fopen('../api/data/' . $_GET['region'] . '/' . $_GET['number'] . '/' . $_GET['sensor'] . '/log.txt', 'r');
+                    } else {
+                      $file = fopen('../api/data/' . $_GET['region'] . '/' . $_GET['sensor'] . '/log.txt', 'r');
+                    }
+
+                    //Output lines until EOF is reached
+                    while (!feof($file)) {
+                      $line = fgets($file);
+                      if ($line != false) {
+                        $values = explode(';', $line);
+                        echo "<tr>";
+                        echo "<td class='px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap'>" . $values[0] . "</td>";
+                        echo "<td class='px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap'>" . $values[1] . "</td>";
+                        echo "</tr>";
+                      }
+                    }
+                    fclose($file);
+                    ?>
                   </tbody>
                 </table>
               </div>
