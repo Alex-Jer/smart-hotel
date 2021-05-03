@@ -40,7 +40,7 @@
                   </span>
                   <span class="sidebar-item">Terraço</span> <!-- Temporário -->
                 </div>
-                <div class="dropdown-content bg-white dark:bg-darker">
+                <div class="bg-white dropdown-content dark:bg-darker">
                   <a href="logs?region=rooftop&sensor=solar_panel" class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100">
                     <span>
                       <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
@@ -73,7 +73,7 @@
                   </span>
                   <span class="sidebar-item">Quartos</span> <!-- Temporário -->
                 </div>
-                <div class="dropdown-content bg-white dark:bg-darker">
+                <div class="bg-white dropdown-content dark:bg-darker">
                   <a href="logs?region=rooms&number=1&sensor=ac" class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100">
                     <span>
                       <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
@@ -133,7 +133,7 @@
                   </span>
                   <span class="sidebar-item">Piscina</span> <!-- Temporário -->
                 </div>
-                <div class="dropdown-content bg-white dark:bg-darker">
+                <div class="bg-white dropdown-content dark:bg-darker">
                   <a href="logs?region=pool&sensor=lights" class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100">
                     <span>
                       <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">

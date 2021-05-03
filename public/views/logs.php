@@ -46,15 +46,6 @@ switch ($_GET['region']) {
 }
 ?>
 
-<script>
-  function OnSelectionChange() {
-    var e = document.getElementById("number");
-    var number = e.options[e.selectedIndex].value;
-    var sensor = "<?php echo $_GET['sensor']; ?>";
-    window.location.replace("logs?region=rooms&number=" + number + "&sensor=" + sensor);
-  }
-</script>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +78,7 @@ switch ($_GET['region']) {
           <h3 class="mt-6 text-xl dark:text-light"><?php echo $title ?></h3>
         </div>
         <div id="divNumber2">
-          <select id="number" name="number" onchange="OnSelectionChange()">
+          <select id="number" class="dark:bg-dark dark:text-light" name="number" onchange="OnSelectionChange()">
             <option <?php if ($_GET['number'] == 1) echo "selected"; ?> value="1">1</option>
             <option <?php if ($_GET['number'] == 2) echo "selected"; ?> value="2">2</option>
             <option <?php if ($_GET['number'] == 3) echo "selected"; ?> value="3">3</option>
@@ -146,7 +137,14 @@ switch ($_GET['region']) {
     </div>
   </div>
   <script src="public/js/script.js"></script>
+  <script>
+    function OnSelectionChange() {
+      var e = document.getElementById("number");
+      var number = e.options[e.selectedIndex].value;
+      var sensor = "<?php echo $_GET['sensor']; ?>";
+      window.location.replace("logs?region=rooms&number=" + number + "&sensor=" + sensor);
+    }
+  </script>
 </body>
-
 
 </html>

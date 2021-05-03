@@ -31,45 +31,51 @@
         <!-- Sensores -->
         <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-3">
 
-          <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+          <div class="p-4 transition-shadow border rounded-lg shadow-sm dark:border-teal-700 hover:shadow-lg">
             <div class="flex items-start justify-between">
               <div class="flex flex-col space-y-2">
-                <span class="text-gray-400">Bateria Solar</span>
-                <span class="text-lg font-semibold"><?php echo $rooftop_solarbattery[1] ?>%</span>
+                <span class="text-gray-400 dark:text-gray-300">Bateria Solar</span>
+                <span class="text-lg font-semibold dark:text-light"><?php echo $rooftop_solarbattery[1] ?>%</span>
               </div>
-              <div class="p-10 bg-gray-200 rounded-md"></div>
+              <span class="text-gray-300 dark:text-gray-300">
+                <i class="fas fa-5x fa-car-battery"></i>
+              </span>
             </div>
             <div>
-              <span>Atualizado em</span>
-              <span class="inline-block px-2 text-sm text-white bg-green-300 rounded"><?php echo $rooftop_solarbattery[0] ?></span>
+              <span class="dark:text-gray-300">Atualizado em</span>
+              <span class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500"><?php echo $rooftop_solarbattery[0] ?></span>
             </div>
           </div>
 
-          <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+          <div class="p-4 transition-shadow border rounded-lg shadow-sm dark:border-teal-700 hover:shadow-lg">
             <div class="flex items-start justify-between">
               <div class="flex flex-col space-y-2">
-                <span class="text-gray-400">Temperatura Piscina</span>
-                <span class="text-lg font-semibold"><?php echo $pool_temp[1] ?>ºC</span>
+                <span class="text-gray-400 dark:text-gray-300">Temperatura Piscina</span>
+                <span class="text-lg font-semibold dark:text-light"><?php echo $pool_temp[1] ?>ºC</span>
               </div>
-              <div class="p-10 bg-gray-200 rounded-md"></div>
+              <span class="text-gray-300 dark:text-gray-300">
+                <i class="fas fa-5x fa-swimmer"></i>
+              </span>
             </div>
             <div>
-              <span>Atualizado em</span>
-              <span class="inline-block px-2 text-sm text-white bg-green-300 rounded"><?php echo $pool_temp[0] ?></span>
+              <span class="dark:text-gray-300">Atualizado em</span>
+              <span class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500"><?php echo $pool_temp[0] ?></span>
             </div>
           </div>
 
-          <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+          <div class="p-4 transition-shadow border rounded-lg shadow-sm dark:border-teal-700 hover:shadow-lg">
             <div class="flex items-start justify-between">
               <div class="flex flex-col space-y-2">
-                <span class="text-gray-400">Cancela Estacionamento</span>
-                <span class="text-lg font-semibold"><?php echo $parking_barrier[1] ?></span>
+                <span class="text-gray-400 dark:text-gray-400">Cancela Estacionamento</span>
+                <span class="text-lg font-semibold dark:text-light"><?php echo $parking_barrier[1] ?></span>
               </div>
-              <div class="p-10 bg-center bg-no-repeat rounded-md" style="background-image: url('public/svg/parking-solid.svg')"></div>
+              <span class="text-gray-300 dark:text-gray-300">
+                <i class="fas fa-5x fa-parking"></i>
+              </span>
             </div>
             <div>
-              <span>Atualizado em</span>
-              <span class="inline-block px-2 text-sm text-white bg-green-300 rounded"><?php echo $parking_barrier[0] ?></span>
+              <span class="dark:text-gray-300">Atualizado em</span>
+              <span class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500"><?php echo $parking_barrier[0] ?></span>
             </div>
           </div>
         </div>
@@ -79,6 +85,7 @@
 
     </div>
   </div>
+  <script src="https://kit.fontawesome.com/6bed2cc76e.js" crossorigin="anonymous"></script>
   <script src="public/js/script.js"></script>
 </body>
 
