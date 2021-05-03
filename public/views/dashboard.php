@@ -89,17 +89,14 @@
                 <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
                   <thead class="bg-gray-50 dark:bg-darker">
                     <tr>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      <th scope="col" class="w-1/3 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Dispositivo
                       </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      <th scope="col" class="w-1/3 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Valor
                       </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                      <th scope="col" class="w-1/3 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Data de Atualização
-                      </th>
-                      <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                        Estado
                       </th>
                     </tr>
                   </thead>
@@ -107,11 +104,21 @@
                     <tr>
                       <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">Painel Solar</td>
                       <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                        <?php echo $rooftop_solarpanels[1] ?> kWh
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                        <?php echo $rooftop_solarpanels[0] ?>
                       </td>
                     </tr>
                     <tr>
-                      <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">01/05/2021 13:00</td>
-                      <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">0,82
+                      <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">Luzes Piscina</td>
+                      <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                          <?php echo $pool_lights[1] ?>
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                        <?php echo $pool_lights[0] ?>
                       </td>
                     </tr>
                   </tbody>
