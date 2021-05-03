@@ -1,50 +1,5 @@
-<?php include_once '../src/auth.php';
-
-switch ($_GET['sensor']) {
-  case 'barrier';
-    $title = "Barreira";
-    break;
-  case 'lights';
-    $title = "Luzes";
-    break;
-  case 'temperature';
-    $title = "Temperatura";
-    break;
-  case 'solar_battery';
-    $title = "Bateria ";
-    break;
-  case 'solar_panel';
-    $title = "Painel Solar";
-    break;
-  case 'ac';
-    $title = "Ar Condicionado";
-    break;
-  case 'door';
-    $title = "Porta";
-    break;
-  case 'humidity';
-    $title = "Humidade";
-    break;
-  case 'smoke';
-    $title = "Detetor de Fumo";
-    break;
-}
-
-switch ($_GET['region']) {
-  case 'parking';
-    $title = $title . " do Parque de Estacionamento";
-    break;
-  case 'pool';
-    $title = $title . " da Piscina";
-    break;
-  case 'rooftop';
-    $title = $title . " do Telhado";
-    break;
-  case 'rooms';
-    $title = $title . " do Quarto ";
-    break;
-}
-?>
+<?php include_once '../src/auth.php'; ?>
+<?php include_once '../src/logs_sensors.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,6 +42,7 @@ switch ($_GET['region']) {
             <option <?php if ($_GET['number'] == 6) echo "selected"; ?> value="6">6</option>
           </select>
         </div>
+
         <div class="flex flex-col mt-6">
           <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">

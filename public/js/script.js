@@ -40,7 +40,7 @@ const closeSidebarMobile = () => {
   document.querySelector('.sidebar-backdrop').classList.add('invisible');
 };
 
-if (window.screen.availWidth >= 500) {
+if (window.screen.availWidth >= 1024) {
   closeSidebar();
 } else {
   closeSidebarMobile();
