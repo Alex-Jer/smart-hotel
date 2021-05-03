@@ -1,4 +1,4 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/public/src/auth.php'; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . 'public/src/auth.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Styles & Tailwind -->
-  <link rel="stylesheet" href="/public/css/tailwind.css" />
-  <link rel="stylesheet" href="/public/css/styles.css" />
+  <link rel="stylesheet" href="public/css/tailwind.css" />
+  <link rel="stylesheet" href="public/css/styles.css" />
   <title>Histórico - Hotel Inteligente</title>
 </head>
 
@@ -103,7 +103,7 @@
 
     </div>
   </div>
-  <script src="/public/js/script.js"></script>
+  <script src="public/js/script.js"></script>
 </body>
 
 

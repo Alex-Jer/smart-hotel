@@ -118,7 +118,7 @@
               <!-- Avatar button -->
               <div class="relative">
                 <button class="p-1 bg-gray-200 rounded-full cursor-default dark:bg-ocean-400 focus:outline-none">
-                  <img class="object-cover w-8 h-8 rounded-full" src="/public/img/profile_pic.png"
+                  <img class="object-cover w-8 h-8 rounded-full" src="public/img/profile_pic.png"
                     alt="Profile Picture" />
                 </button>
 

@@ -1,4 +1,4 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/public/src/auth.php'; ?>
+<?php include_once '../src/auth.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Hotel Inteligente</title>
   <!-- Styles & Tailwind -->
-  <link rel="stylesheet" href="/public/css/tailwind.css" />
-  <link rel="stylesheet" href="/public/css/styles.css" />
+  <link rel="stylesheet" href="public/css/tailwind.css" />
+  <link rel="stylesheet" href="public/css/styles.css" />
 </head>
 
 <body>
@@ -36,7 +36,7 @@
     </div>
   </div>
   <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script> -->
-  <script src="/public/js/script.js"></script>
+  <script src="public/js/script.js"></script>
 </body>
 
 </html>
