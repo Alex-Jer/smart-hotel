@@ -8,13 +8,14 @@ if ($method_type == 'POST') {
   print_r($_POST);
   if (isset($_POST['region'])) {
     echo "Region: {$_POST['region']}" . PHP_EOL;
+    $time = date("d/m/Y H:i:s");
     switch ($_POST['region']) {
       case 'rooms':
-        if (isset($_POST['number']) && isset($_POST['sensor']) && isset($_POST['value']) && isset($_POST['time'])) {
+        if (isset($_POST['number']) && isset($_POST['sensor']) && isset($_POST['value'])) {
           if ($_POST['sensor'] != 'door') {
-            echo file_put_contents("data/{$_POST['region']}/{$_POST['number']}/{$_POST['sensor']}/value.txt", "$_POST[time]" . ';' . "$_POST[value]");
+            echo file_put_contents("data/{$_POST['region']}/{$_POST['number']}/{$_POST['sensor']}/value.txt", $time . ';' . "$_POST[value]");
           }
-          echo file_put_contents("data/{$_POST['region']}/{$_POST['number']}/{$_POST['sensor']}/log.txt", "$_POST[time]" . ';' . "$_POST[value]" . PHP_EOL, FILE_APPEND);
+          echo file_put_contents("data/{$_POST['region']}/{$_POST['number']}/{$_POST['sensor']}/log.txt", $time . ';' . "$_POST[value]" . PHP_EOL, FILE_APPEND);
         } else {
           echo 'ERRO: Dados em Falta!' . PHP_EOL;
         }
@@ -22,9 +23,9 @@ if ($method_type == 'POST') {
       case 'pool':
       case 'parking':
       case 'rooftop':
-        if (isset($_POST['value']) && isset($_POST['time']) && isset($_POST['sensor'])) {
-          echo file_put_contents("data/{$_POST['region']}/{$_POST['sensor']}/value.txt", "$_POST[time]" . ';' . "$_POST[value]");
-          echo file_put_contents("data/{$_POST['region']}/{$_POST['sensor']}/log.txt", "$_POST[time]" . ';' . "$_POST[value]" . PHP_EOL, FILE_APPEND);
+        if (isset($_POST['value']) && isset($_POST['sensor'])) {
+          echo file_put_contents("data/{$_POST['region']}/{$_POST['sensor']}/value.txt", $time . ';' . "$_POST[value]");
+          echo file_put_contents("data/{$_POST['region']}/{$_POST['sensor']}/log.txt", $time . ';' . "$_POST[value]" . PHP_EOL, FILE_APPEND);
         } else {
           echo 'ERRO: Dados em Falta!' . PHP_EOL;
         }
