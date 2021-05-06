@@ -5,10 +5,8 @@ if (isset($isRestricted)) {
 }
 
 $users = [
-    ['admin', 'admin', 'admin'],
-    ['admin2', 'admin2', 'admin'],
-    ['user', 'user', 'user'],
-    ['user2', 'user2', 'user'],
+    ['admin', 'admin'],
+    ['user', 'user'],
 ];
 
 $loginSuccess = null;
@@ -22,6 +20,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             session_start();
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
+            if ($user[0] == 'admin') {
+                $_SESSION['type'] = 'admin';
+            } else {
+                $_SESSION['type'] = 'user';
+            }
             header('Location: dashboard');
         } else {
             $loginSuccess = false;
