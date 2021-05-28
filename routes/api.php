@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('api');
-});
+// Route::get('/', function () {
+//     return view('api');
+// });
+
+
+Route::get('/', [SensorController::class, 'show']);
 
 Route::post('/', [SensorController::class, 'store']);
 
