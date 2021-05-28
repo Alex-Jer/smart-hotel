@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SensorController::class, 'show']);
 
-Route::post('/', [SensorController::class, 'store']);
+Route::post('/', [SensorController::class, 'update']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
