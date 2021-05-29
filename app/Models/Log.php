@@ -10,10 +10,7 @@ class Log extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $fillable = [
-        'value',
-        'timestamp',
-    ];
+    protected $fillable = ['value'];
 
     /**
      * Get the sensor that owns the Log.
@@ -22,6 +19,6 @@ class Log extends Model
      */
     public function sensor()
     {
-        return $this->belongsTo(self::class);
+        return $this->belongsTo(Sensor::class);
     }
 }

@@ -137,10 +137,9 @@ class SensorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sensor  $sensor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sensor $sensor)
+    public function update(Request $request)
     {
         // Validate the Request
         if (!$request->name || !$request->region_name || !$request->value)
@@ -163,18 +162,24 @@ class SensorController extends Controller
             ->first()->id;
 
         // Finds the sensor id
-        $id = DB::table('sensors')
+        $sensor = DB::table('sensors')
             ->where('region_id', $region_id)
             ->where('name', $request->name)
-            ->first()->id;
+            ->first();
 
-        if (!$id) return 'ERROR: Sensor not found!';
+        if (!$sensor) return 'ERROR: Sensor not found!';
 
         // Stores the sensor's data from the database
-        $sensor = Sensor::find($id);
+        $sensor = Sensor::find($sensor->id);
 
         // Updates the sensor's value with the request's value
         $sensor->value = $request->value;
+
+        // Saves a new log
+        $log = new Log;
+        $log->sensor_id = $sensor->id;
+        $log->value = $sensor->value;
+        $log->save();
 
         // Saves the new value into the database
         return $sensor->save();
