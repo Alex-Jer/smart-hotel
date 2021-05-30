@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use DB;
 use App\Models\Log;
 use App\Models\Sensor;
+use App\Models\Region;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class SensorController extends Controller
 {
@@ -16,7 +18,8 @@ class SensorController extends Controller
      */
     public function index()
     {
-        //
+        $sensors = Sensor::all(); // Receives every sensor from the database
+        return view('dashboard/index', compact('sensors')); // Shows the dashboard with the sensors' data
     }
 
     /**
@@ -73,13 +76,6 @@ class SensorController extends Controller
 
         // Pushes the region_id into the array
         if ($region_id) $sensor['region_id'] = $region_id->id;
-
-        // $exists = DB::table('sensors')
-        //     ->where('region_id', $sensor['region_id'])
-        //     ->where('name', $request->name)
-        //     ->first();
-
-        // dd($exists);
 
         return Sensor::create($sensor);
     }
@@ -142,7 +138,7 @@ class SensorController extends Controller
     public function update(Request $request)
     {
         // Validate the Request
-        if (!$request->name || !$request->region_name || !$request->value)
+        if (!$request->name || !$request->region_name || $request->value === null)
             return 'ERROR: Invalid parameters! Must contain [name] [region_name] [value]';
 
         if (!is_numeric($request->value)) return 'ERROR: [value] parameter must be a number!';

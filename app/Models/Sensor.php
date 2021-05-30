@@ -10,11 +10,7 @@ class Sensor extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $fillable = [
-        'region_id',
-        'name',
-        'value',
-    ];
+    protected $fillable = ['region_id', 'name', 'value'];
 
     /**
      * Get the region that owns the Sensor.

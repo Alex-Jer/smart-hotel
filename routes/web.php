@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\SensorController;
-use App\Models\Sensor;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\SensorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,32 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/', [SensorController::class, 'index'])
+    ->name('dashboard');
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
-// Route::get('api/{sensor}', function (Sensor $sensor) {
-//     return view('api', [
-//         'sensor' => $sensor,
-//     ]);
-// });
-
-// Route::get('api', [SensorController::class, 'show']);
-
-// Route::post('api', function () {
-//     return view('api');
-// });
-
-// Route::post('api', [SensorController::class, 'store']);
-
-// Route::get('/api/{region}/{sensor}', function () {
-//     return view('api');
-// });
-
-// Route::get('/api', function (Sensor $sensor) {
-//     return view('api', [
-//         'sensor' => $sensor,
-//     ]);
-// });
-
-// Route::get('/api/{region}/{sensor}', 'SensorController@show');
+Route::get('/register', function () {
+    return view('auth/register');
+})->name('register');

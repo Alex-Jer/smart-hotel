@@ -1,0 +1,133 @@
+body,
+html {
+  height: 100%;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  -ms-overflow-style: none;
+}
+
+.bg-image-login {
+  /* Definir imagem e aplicando um filtro para a mesma ficar mais escura */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://capmagellan.com/wp-content/uploads/2017/04/170405-Leiria-photo-Gil-Quintino.jpg");
+
+  /* Efeito de Desfoque à Imagem */
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+
+  /* Definir os limites do background */
+  left: -10px;
+  top: -10px;
+  bottom: -10px;
+  position: fixed;
+  right: -10px;
+  z-index: -1;
+
+  /* Definições do Background */
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#divAlerta {
+  margin-bottom: 15px;
+}
+
+#divError {
+  z-index: 5;
+}
+
+.not-found {
+  font-family: "Whitney SSm A", "Whitney SSm B", "Helvetica Neue", Helvetica,
+    Arial, Sans-Serif;
+}
+
+.error-text {
+  font-size: 130px;
+}
+
+@media (min-width: 768px) {
+  .error-text {
+    font-size: 220px;
+  }
+}
+
+#dark-theme-toggle:before {
+  content: var(--content-url);
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  top: 0;
+  right: 22px;
+  padding-left: 3px;
+  padding-top: 1px;
+  left: 0;
+  transform: scale(1.1);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: 0.2s ease-in-out;
+}
+
+#dark-theme-toggle:checked {
+  background-color: #22d3ee;
+}
+
+#dark-theme-toggle:checked:before {
+  left: 1.25rem;
+}
+
+#dark-theme-toggle-mobile:before {
+  content: var(--content-url);
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  top: 0;
+  right: 22px;
+  padding-left: 3px;
+  padding-top: 1px;
+  left: 0;
+  transform: scale(1.1);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: 0.2s ease-in-out;
+}
+
+#dark-theme-toggle-mobile:checked {
+  background-color: #22d3ee;
+}
+
+#dark-theme-toggle-mobile:checked:before {
+  left: 1.25rem;
+}
+
+.sidebar-backdrop {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.dropdown-content {
+  display: none;
+  min-width: 160px;
+  padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#divNumber1,
+#divNumber2 {
+  display: inline-block;
+}
+
+#divNumber2 {
+  font-size: 20px;
+  font-weight: 900;
+}
