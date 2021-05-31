@@ -108,6 +108,19 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:bg-darker dark:divide-darker">
+                            @foreach ($sensors as $sensor)
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                                        {{ $sensor->name }}
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                                        {{ $sensor->value }} {{ $sensor->unit }}
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                                        {{ $sensor->updated_at }}
+                                    </td>
+                                </tr>
+                            @endforeach
                             <tr>
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
                                     Painel Solar</td>

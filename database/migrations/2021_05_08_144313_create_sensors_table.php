@@ -18,6 +18,7 @@ class CreateSensorsTable extends Migration
             $table->string('name');
             $table->foreignId('region_id')->references('id')->on('regions')->onUpdate('cascade')->onDelete('cascade');
             $table->double('value');
+            $table->string('unit')->nullable();
             $table->timestamps();
         });
     }
