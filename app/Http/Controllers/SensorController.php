@@ -18,8 +18,7 @@ class SensorController extends Controller
      */
     public function index()
     {
-        $sensors = Sensor::all(); // Receives every sensor from the database
-        return view('dashboard/index', compact('sensors')); // Shows the dashboard with the sensors' data
+        //
     }
 
     /**

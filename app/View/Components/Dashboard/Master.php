@@ -7,13 +7,20 @@ use Illuminate\View\Component;
 class Master extends Component
 {
     /**
-     * Create a new component instance.
+     * The page's title.
      *
+     * @var string
+     */
+    public $title;
+
+    /**
+     * Create a new component instance.
+     * @param  string  $title
      * @return void
      */
-    public function __construct()
+    public function __construct($title)
     {
-        //
+        $this->title = $title;
     }
 
     /**

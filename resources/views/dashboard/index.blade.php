@@ -1,4 +1,4 @@
-<x-dashboard.master>
+<x-dashboard.master title="Dashboard">
     <!-- Sensores -->
     <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-3">
 
@@ -7,7 +7,7 @@
                 <div class="flex flex-col space-y-2">
                     <span class="text-gray-400 dark:text-gray-300">Bateria Solar</span>
                     @foreach ($sensors as $sensor)
-                        @if ($sensor->region->name === 'roof' && $sensor->name === 'solar_battery')
+                        @if ($sensor->region->name === 'rooftop' && $sensor->name === 'solar_battery')
                             <span class="text-lg font-semibold dark:text-light">{{ $sensor->value }}%</span>
                         @endif
                     @endforeach
@@ -19,7 +19,7 @@
             <div>
                 <span class="dark:text-gray-300">Atualizado em</span>
                 @foreach ($sensors as $sensor)
-                    @if ($sensor->region->name === 'roof' && $sensor->name === 'solar_battery')
+                    @if ($sensor->region->name === 'rooftop' && $sensor->name === 'solar_battery')
                         <span
                             class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500">{{ $sensor->updated_at }}</span>
                     @endif
@@ -121,30 +121,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                    Painel Solar</td>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                    {{-- <?php echo $rooftop_solarpanels[1]; ?> --}}
-                                    kWh
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                    {{-- <?php echo $rooftop_solarpanels[0]; ?> --}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                    Luzes Piscina</td>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                    <span
-                                        class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                                        {{-- <?php echo $pool_lights[1]; ?> --}}
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                    {{-- <?php echo $pool_lights[0]; ?> --}}
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
