@@ -202,7 +202,7 @@
               <form method="POST" action="{{ route('logout') }}">
                   @csrf
 
-                  <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
+                  <a href="{{ route('logout') }} onclick=" event.preventDefault(); this.closest('form').submit();""
                       class="flex items-center justify-center w-full px-4 py-2 space-x-1 font-medium tracking-wider uppercase bg-gray-100 border rounded-md dark:bg-dark dark:border-darker focus:outline-none dark:text-light focus:ring">
                       <span>
                           <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -263,7 +263,7 @@
                       <div class="relative">
                           <button
                               class="p-1 bg-gray-200 rounded-full cursor-default dark:bg-ocean-400 focus:outline-none">
-                              <img class="object-cover w-8 h-8 rounded-full" src="img/profile_pic.png"
+                              <img class="object-cover w-8 h-8 rounded-full" src="public/img/profile_pic.png"
                                   alt="Profile Picture" />
                           </button>
 
