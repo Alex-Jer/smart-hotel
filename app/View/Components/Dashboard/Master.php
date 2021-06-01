@@ -6,21 +6,19 @@ use Illuminate\View\Component;
 
 class Master extends Component
 {
-    /**
-     * The page's title.
-     *
-     * @var string
-     */
     public $title;
+    public $regions;
 
     /**
      * Create a new component instance.
      * @param  string  $title
+     * @param  string  $regions
      * @return void
      */
-    public function __construct($title)
+    public function __construct($title, $regions)
     {
         $this->title = $title;
+        $this->regions = $regions;
     }
 
     /**

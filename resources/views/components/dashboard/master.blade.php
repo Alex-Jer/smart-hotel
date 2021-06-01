@@ -18,7 +18,7 @@
         <div class="flex h-screen overflow-y-hidden bg-white dark:bg-dark">
 
             <!-- Sidebar e Topbar -->
-            <x-dashboard.sidebar />
+            <x-dashboard.sidebar :regions="$regions" />
 
             <!-- Main content -->
             <main class="flex-1 max-h-full p-5 overflow-hidden overflow-y-scroll">

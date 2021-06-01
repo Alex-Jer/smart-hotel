@@ -1,4 +1,4 @@
-<x-dashboard.master title="Dashboard">
+<x-dashboard.master title="Dashboard" :regions="$regions">
     <!-- Sensores -->
     <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-3">
 
@@ -8,7 +8,8 @@
                     <span class="text-gray-400 dark:text-gray-300">Bateria Solar</span>
                     @foreach ($sensors as $sensor)
                         @if ($sensor->region->name === 'rooftop' && $sensor->name === 'solar_battery')
-                            <span class="text-lg font-semibold dark:text-light">{{ $sensor->value }}%</span>
+                            <span
+                                class="text-lg font-semibold dark:text-light">{{ $sensor->value . $sensor->unit }}</span>
                         @endif
                     @endforeach
                 </div>
@@ -111,10 +112,10 @@
                             @foreach ($sensors as $sensor)
                                 <tr>
                                     <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                        {{ $sensor->name }}
+                                        {{ $sensor->slug }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                        {{ $sensor->value }} {{ $sensor->unit }}
+                                        {{ $sensor->value . $sensor->unit }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
                                         {{ $sensor->updated_at }}

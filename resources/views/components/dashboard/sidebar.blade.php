@@ -34,19 +34,34 @@
             </li>
             <li>
                 <div class="dropdown">
+                    <ul>
+                        <li>
+                            <div class="dropdown">
+                                <div
+                                    class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100">
+                                    <span>
+                                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span class="sidebar-item">Logs</span>
+                                </div>
 
-                    <a href="{{ route('logs') }}"
-                        class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100">
-                        <span>
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                        </span>
-                        <span class="sidebar-item">Logs</span>
-                    </a>
-
+                                <div class="bg-white dropdown-content dark:bg-darker">
+                                    @foreach ($regions as $region)
+                                        <a href="{{ route('logs', ['region' => $region->name, 'number' => $region->number]) }}"
+                                            class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100">
+                                            <span>&#9679;</span>
+                                            <span
+                                                class="sidebar-item">{{ $region->slug . ' ' . $region->number }}</span>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </li>
         </ul>
@@ -117,7 +132,7 @@
                 <!-- Avatar button -->
                 <div class="relative">
                     <button class="p-1 bg-gray-200 rounded-full cursor-default dark:bg-ocean-400 focus:outline-none">
-                        <img class="object-cover w-8 h-8 rounded-full" src="img/profile_pic.png"
+                        <img class="object-cover w-8 h-8 rounded-full" src="/img/profile_pic.png"
                             alt="Profile Picture" />
                     </button>
 

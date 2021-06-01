@@ -6,14 +6,17 @@ use Illuminate\View\Component;
 
 class Sidebar extends Component
 {
+    public $regions;
+
     /**
      * Create a new component instance.
      *
+     * @param  string  $regions
      * @return void
      */
-    public function __construct()
+    public function __construct($regions)
     {
-        //
+        $this->regions = $regions;
     }
 
     /**
