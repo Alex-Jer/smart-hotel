@@ -19,8 +19,6 @@ const closeSidebar = () => {
 
     sidebarItems.forEach((el) => {
         el.classList.add('invisible');
-        el.classList.remove('dark:bg-ocean-700');
-        console.log(el.classList);
     });
 };
 
@@ -84,3 +82,13 @@ const sidebarToggleSubmenu = () => {
         }
     });
 };
+
+const sidebarLogsButton = document.getElementById('sidebar-logs');
+const sidebarLogsChevron = document.getElementById('sidebar-logs-chevron');
+
+sidebarLogsButton.addEventListener('click', (event) => {
+    if (sidebarLogsChevron.classList.contains('rotate-180')) {
+        return sidebarLogsChevron.classList.remove('rotate-180');
+    }
+    return sidebarLogsChevron.classList.add('rotate-180');
+});

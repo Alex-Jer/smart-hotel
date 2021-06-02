@@ -19,7 +19,7 @@
     </div>
 
     <!-- Sidebar links -->
-    <nav class="flex-1 overflow-hidden hover:overflow-y-auto">
+    <nav class="flex-1 overflow-hidden select-none hover:overflow-y-auto">
         <ul class="p-2 overflow-hidden dark:text-light">
             <li>
                 <a href="/" class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
@@ -38,8 +38,9 @@
                 <div class="dropdown" onclick="sidebarToggleSubmenu()">
                     <ul>
                         <li>
-                            <div
-                                class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100">
+                            <div class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
+                                {{ request()->is('logs*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}"
+                                id="sidebar-logs">
                                 <span>
                                     <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,16 +49,22 @@
                                     </svg>
                                 </span>
                                 <span class="sidebar-item">Logs</span>
+                                <span aria-hidden="true" style="margin-left:auto">
+                                    <svg class="w-4 h-4 transition-transform transform" id="sidebar-logs-chevron"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
                             </div>
 
                             <div class="bg-white dropdown-content dark:bg-darker sidebar-item">
                                 @foreach ($regions as $region)
                                     <a href="{{ route('logs', ['region' => $region->name, 'number' => $region->number]) }}"
                                         class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
-                                    {{ request()->is('*' . $region->name) ? 'dark:bg-ocean-700 bg-gray-200' : '' }}">
-                                        <span class="">
-                                            &#9679;
-                                            {{ $region->slug . ' ' . $region->number }}</span>
+                                         {{ request()->is('*' . $region->name) || request()->is('*' . $region->name . '/' . $region->number) ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
+                                        <span>{{ $region->slug . ' ' . $region->number }}</span>
                                     </a>
                                 @endforeach
                             </div>
