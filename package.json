@@ -14,10 +14,17 @@
         "@tailwindcss/typography": "^0.4.0",
         "alpinejs": "^2.7.3",
         "axios": "^0.21",
+        "eslint": "^7.27.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.4",
         "laravel-mix": "^6.0.19",
         "lodash": "^4.17.19",
-        "postcss": "^8.2.15",
+        "postcss": "^8.3.0",
         "postcss-import": "^14.0.1",
-        "tailwindcss": "^2.0.1"
+        "tailwindcss": "^2.1.4"
+    },
+    "dependencies": {
+        "autoprefixer": "^10.2.6"
     }
 }

@@ -4,7 +4,7 @@
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden border-b border-gray-200 rounded-md shadow-md dark:border-dark">
-                    <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
+                    <table class="min-w-full overflow-x-scroll divide-y divide-gray-200 dark:divide-teal-700">
                         <thead class="bg-gray-50 dark:bg-darker">
                             <tr>
                                 <th scope="col"
@@ -21,11 +21,11 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-darker dark:divide-darker">
+                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-darker dark:divide-dark">
                             @foreach ($logs as $log)
                                 @foreach ($sensors as $sensor)
                                     @if ($sensor->id === $log->sensor_id)
-                                        <tr>
+                                        <tr class="transition-all hover:bg-gray-100 dark:hover:bg-dark hover:shadow-lg">
                                             <td
                                                 class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
                                                 {{ $sensor->slug }}
