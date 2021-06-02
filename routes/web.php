@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\SensorController;
 use App\Models\Sensor;
 use App\Models\Region;
+use App\Models\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,29 +26,39 @@ Route::middleware(['auth:sanctum', 'verified'])
     })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/logs/{region}/{number?}', function ($region, $number = null) {
+    ->get('/logs/{region}/{number?}', function ($regionName, $number = null) {
         $regions = Region::orderBy('name')->orderBy('number')->get(); // Receives every region from the database
 
-        // Equals to true if the region exists and has a number (e.g. Room 3)
+        // Equals to true if the region exists
         $exists = DB::table('regions')
-            ->where('name', $region)
+            ->where('name', $regionName)
             ->where('number', $number)
             ->exists();
 
         // Returns an error if the region couldn't be found
         if (!$exists) return 'ERROR: Region not found!';
 
-        // Finds the region_id
-        $region_id = DB::table('regions')
-            ->where('name', $region)
+        // Finds the region
+        $region = DB::table('regions')
+            ->where('name', $regionName)
             ->where('number', $number)
-            ->first()->id;
+            ->first();
 
+        // Stores the sensors from the specified region
         $sensors = DB::table('sensors')
-            ->where('region_id', $region_id)
+            ->where('region_id', $region->id)
             ->get();
 
-        return view('dashboard/logs', compact('sensors', 'regions')); // Shows the dashboard with the sensors' data
+        // Creates an array with the ID of every sensor belonging to the specified region
+        $sensorsIdArray = $sensors->pluck('id')->toArray();
+
+        // Stores the logs from every sensor from the specified region
+        $logs = DB::table('logs')
+            ->whereIn('sensor_id', $sensorsIdArray)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('dashboard/logs', compact('sensors', 'regions', 'region', 'logs')); // Shows the dashboard with the sensors' data
     })->name('logs');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
