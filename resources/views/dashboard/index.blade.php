@@ -2,87 +2,13 @@
     <!-- Sensores -->
     <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-3">
 
-        <div class="p-4 transition-shadow border rounded-lg shadow-sm dark:border-teal-700 hover:shadow-lg">
-            <div class="flex items-start justify-between">
-                <div class="flex flex-col space-y-2">
-                    <span class="text-gray-400 dark:text-gray-300">Bateria Solar</span>
-                    @foreach ($sensors as $sensor)
-                        @if ($sensor->region->name === 'rooftop' && $sensor->name === 'solar_battery')
-                            <span
-                                class="text-lg font-semibold dark:text-light">{{ $sensor->value . $sensor->unit }}</span>
-                        @endif
-                    @endforeach
-                </div>
-                <span class="text-gray-300 dark:text-gray-300">
-                    <i class="fas fa-5x fa-car-battery"></i>
-                </span>
-            </div>
-            <div>
-                <span class="dark:text-gray-300">Atualizado em</span>
-                @foreach ($sensors as $sensor)
-                    @if ($sensor->region->name === 'rooftop' && $sensor->name === 'solar_battery')
-                        <span
-                            class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500">{{ $sensor->updated_at }}</span>
-                    @endif
-                @endforeach
-            </div>
-        </div>
+        <livewire:dashboard-highlights :sensors="$sensors" region="rooftop" sensorName="solar_battery"
+            svg="car-battery" />
 
-        <div class="p-4 transition-shadow border rounded-lg shadow-sm dark:border-teal-700 hover:shadow-lg">
-            <div class="flex items-start justify-between">
-                <div class="flex flex-col space-y-2">
-                    <span class="text-gray-400 dark:text-gray-300">Temperatura Piscina</span>
-                    @foreach ($sensors as $sensor)
-                        @if ($sensor->region->name === 'pool' && $sensor->name === 'temperature')
-                            <livewire:show-pool-temp :sensorId="$sensor->id" />
-                        @endif
-                    @endforeach
-                </div>
-                <span class="text-gray-300 dark:text-gray-300">
-                    <i class="fas fa-5x fa-swimmer"></i>
-                </span>
-            </div>
-            <div>
-                <span class="dark:text-gray-300">Atualizado em</span>
-                @foreach ($sensors as $sensor)
-                    @if ($sensor->region->name === 'pool' && $sensor->name === 'temperature')
-                        <span
-                            class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500">{{ $sensor->updated_at }}</span>
-                    @endif
-                @endforeach
-            </div>
-        </div>
+        <livewire:dashboard-highlights :sensors="$sensors" region="pool" sensorName="temperature" svg="swimmer" />
 
-        <div class="p-4 transition-shadow border rounded-lg shadow-sm dark:border-teal-700 hover:shadow-lg">
-            <div class="flex items-start justify-between">
-                <div class="flex flex-col space-y-2">
-                    <span class="text-gray-400 dark:text-gray-400">Cancela Estacionamento</span>
-                    @foreach ($sensors as $sensor)
-                        @if ($sensor->region->name === 'parking' && $sensor->name === 'barrier')
-                            @switch($sensor->value)
-                                @case(1)
-                                    <span class="text-lg font-semibold dark:text-light">Aberta</span>
-                                @break
-                                @default
-                                    <span class="text-lg font-semibold dark:text-light">Fechada</span>
-                            @endswitch
-                        @endif
-                    @endforeach
-                </div>
-                <span class="text-gray-300 dark:text-gray-300">
-                    <i class="fas fa-5x fa-parking"></i>
-                </span>
-            </div>
-            <div>
-                <span class="dark:text-gray-300">Atualizado em</span>
-                @foreach ($sensors as $sensor)
-                    @if ($sensor->region->name === 'parking' && $sensor->name === 'barrier')
-                        <span
-                            class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500">{{ $sensor->updated_at }}</span>
-                    @endif
-                @endforeach
-            </div>
-        </div>
+        <livewire:dashboard-highlights :sensors="$sensors" region="parking" sensorName="barrier" svg="parking" />
+
     </div>
 
     <!-- Tabela de Sensores -->
