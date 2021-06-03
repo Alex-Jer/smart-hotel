@@ -34,7 +34,7 @@
                     <span class="text-gray-400 dark:text-gray-300">Temperatura Piscina</span>
                     @foreach ($sensors as $sensor)
                         @if ($sensor->region->name === 'pool' && $sensor->name === 'temperature')
-                            <span class="text-lg font-semibold dark:text-light">{{ $sensor->value }}ºC</span>
+                            <livewire:show-pool-temp :sensorId="$sensor->id" />
                         @endif
                     @endforeach
                 </div>

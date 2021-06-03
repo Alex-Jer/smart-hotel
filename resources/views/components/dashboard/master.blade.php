@@ -11,6 +11,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/app.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    @livewireStyles
 </head>
 
 <body>
@@ -40,6 +41,7 @@
     </div>
     <script src="https://kit.fontawesome.com/6bed2cc76e.js" crossorigin="anonymous"></script>
     <script src="/js/script.js"></script>
+    @livewireScripts
 </body>
 
 </html>
