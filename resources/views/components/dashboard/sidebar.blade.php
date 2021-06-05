@@ -39,8 +39,7 @@
                     <ul>
                         <li>
                             <div class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
-                                {{ request()->is('logs*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}"
-                                id="sidebar-logs">
+                                {{ request()->is('logs*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}" id="sidebar-logs">
                                 <span>
                                     <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -51,20 +50,19 @@
                                 <span class="sidebar-item">Logs</span>
                                 <span aria-hidden="true" style="margin-left:auto">
                                     <svg class="w-4 h-4 transition-transform transform" id="sidebar-logs-chevron"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7"></path>
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                        </path>
                                     </svg>
                                 </span>
                             </div>
 
                             <div class="bg-white dropdown-content dark:bg-darker sidebar-item">
-                                @foreach ($regions as $region)
+                                @foreach ($regions->unique('name') as $region)
                                     <a href="{{ route('logs', ['region' => $region->name, 'number' => $region->number]) }}"
                                         class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
-                                         {{ request()->is('*' . $region->name) || request()->is('*' . $region->name . '/' . $region->number) ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
-                                        <span>{{ $region->slug . ' ' . $region->number }}</span>
+                                         {{ request()->is('*' . $region->name . '*') ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
+                                        <span>{{ $region->slug }}</span>
                                     </a>
                                 @endforeach
                             </div>
@@ -84,8 +82,7 @@
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
                 class="flex items-center justify-center w-full px-4 py-2 space-x-1 font-medium tracking-wider uppercase bg-gray-100 border rounded-md dark:bg-dark dark:border-darker focus:outline-none dark:text-light focus:ring">
                 <span>
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="#9ca3af">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
@@ -105,10 +102,9 @@
                 <span class="p-2 text-xl font-semibold tracking-wider uppercase lg:hidden"></span>
                 <!-- Toggle sidebar button -->
                 <button class="p-2 rounded-md lg:invisible focus:outline-none focus:ring" onclick="openSidebarMobile()">
-                    <svg class="w-4 h-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    <svg class="w-4 h-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                     </svg>
                 </button>
             </div>
@@ -135,8 +131,7 @@
                 <!-- Avatar button -->
                 <div class="relative">
                     <button class="p-1 bg-gray-200 rounded-full cursor-default dark:bg-ocean-400 focus:outline-none">
-                        <img class="object-cover w-8 h-8 rounded-full" src="/img/profile_pic.png"
-                            alt="Profile Picture" />
+                        <img class="object-cover w-8 h-8 rounded-full" src="/img/profile_pic.png" alt="Profile Picture" />
                     </button>
 
                 </div>

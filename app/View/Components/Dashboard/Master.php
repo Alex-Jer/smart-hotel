@@ -14,6 +14,7 @@ class Master extends Component
      * Create a new component instance.
      * @param  string  $title
      * @param  string  $regions
+     * @param  bool    $isRoot
      * @return void
      */
     public function __construct($title, $regions, $isRoot = false)
