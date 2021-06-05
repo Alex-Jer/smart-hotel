@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Dashboard;
 
 use Livewire\Component;
 
-class DashboardHighlights extends Component
+class Highlights extends Component
 {
     public $sensors;
     public $region;
@@ -13,6 +13,6 @@ class DashboardHighlights extends Component
 
     public function render()
     {
-        return view('livewire.dashboard-highlights');
+        return view('livewire.dashboard.highlights');
     }
 }

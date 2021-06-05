@@ -3,21 +3,19 @@
         <div class="flex flex-col space-y-2">
             @foreach ($sensors as $sensor)
                 @if ($sensor->region->name === $region && $sensor->name === $sensorName)
-                    <span
-                        class="text-gray-400 dark:text-gray-300">{{ $sensor->region->slug . ' - ' . $sensor->slug }}</span>
+                    <span class="text-gray-400 dark:text-gray-300">{{ $sensor->region->slug . ' - ' . $sensor->slug }}</span>
                     <span class="text-lg font-semibold dark:text-light" wire:poll.1000ms="render">
-                        @if ($sensor->name === 'barrier')
-                            @switch($sensor->value)
-                                @case(1)
-                                    <span class="text-lg font-semibold dark:text-light">Aberta</span>
-                                @break
-                                @default
-                                    <span class="text-lg font-semibold dark:text-light">Fechada</span>
-                            @endswitch
-                        @else
-                            <span
-                                class="text-lg font-semibold dark:text-light">{{ $sensor->value . $sensor->unit }}</span>
-                        @endif
+                        <span class="text-lg font-semibold dark:text-light">
+                            @if ($sensor->name === 'barrier')
+                                @if ($sensor->value)
+                                    Aberta
+                                @else
+                                    Fechada
+                                @endif
+                            @else
+                                {{ $sensor->value . $sensor->unit }}
+                            @endif
+                        </span>
                     </span>
                 @endif
             @endforeach
