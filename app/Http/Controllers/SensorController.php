@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Models\Log;
 use App\Models\Sensor;
-use App\Models\Region;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
 class SensorController extends Controller
 {
@@ -41,7 +39,7 @@ class SensorController extends Controller
     {
         // Validate the Request
         if (!$request->name || !$request->region_name || !$request->value)
-            return 'ERROR: Invalid parameters! Must contain [name] [region_name] [value]';
+            return response('ERROR: Invalid parameters! Must contain [name] [region_name] [value]');
 
         $sensor = [
             'name' => $request->name,
@@ -54,7 +52,7 @@ class SensorController extends Controller
             ->where('number', $request->region_number)
             ->exists();
 
-        if (!$exists) return 'ERROR: Region not found!';
+        if (!$exists) return response('ERROR: Region not found!');
 
         // Finds the region_id and pushes it into the array
         $region_id = DB::table('regions')
@@ -71,7 +69,7 @@ class SensorController extends Controller
             ->first();
 
         // If the region needs a number but it wasn't provided (e.g. A room)
-        if (!$request->region_number && !$region_id) return 'ERROR: Region not found!';
+        if (!$request->region_number && !$region_id) return response('ERROR: Region not found!');
 
         // Pushes the region_id into the array
         if ($region_id) $sensor['region_id'] = $region_id->id;
@@ -89,7 +87,7 @@ class SensorController extends Controller
     {
         // Checks if the necessary parameters exist
         if (!$request->name || !$request->region_name || !$request->type)
-            return 'ERROR: Invalid parameters! Must contain [name] [region_name] [type]';
+            return response('ERROR: Invalid parameters! Must contain [name] [region_name] [type]');
 
 
         // Equals to true if the region exists and has a number (e.g. Room 3)
@@ -99,7 +97,7 @@ class SensorController extends Controller
             ->exists();
 
         // Returns an error if the region couldn't be found
-        if (!$exists) return 'ERROR: Region not found!';
+        if (!$exists) return response('ERROR: Region not found!');
 
         // Finds the region_id
         $region_id = DB::table('regions')
@@ -138,9 +136,9 @@ class SensorController extends Controller
     {
         // Validate the Request
         if (!$request->name || !$request->region_name || $request->value === null)
-            return 'ERROR: Invalid parameters! Must contain [name] [region_name] [value]';
+            return response('ERROR: Invalid parameters! Must contain [name] [region_name] [value]', 400);
 
-        if (!is_numeric($request->value)) return 'ERROR: [value] parameter must be a number!';
+        if (!is_numeric($request->value)) return response('ERROR: [value] parameter must be a number!', 400);
 
         // Equals to true if the region exists
         $exists = DB::table('regions')
@@ -148,7 +146,7 @@ class SensorController extends Controller
             ->where('number', $request->region_number)
             ->exists();
 
-        if (!$exists) return 'ERROR: Region not found!';
+        if (!$exists) return response('ERROR: Region not found!', 400);
 
         // Finds the region_id
         $region_id = DB::table('regions')
@@ -162,7 +160,7 @@ class SensorController extends Controller
             ->where('name', $request->name)
             ->first();
 
-        if (!$sensor) return 'ERROR: Sensor not found!';
+        if (!$sensor) return response('ERROR: Sensor not found!');
 
         // Stores the sensor's data from the database
         $sensor = Sensor::find($sensor->id);
