@@ -21,4 +21,14 @@ class Sensor extends Model
     {
         return $this->belongsTo(Region::class);
     }
+
+    /**
+     * Get all of the logs for the Sensor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function log()
+    {
+        return $this->hasMany(Log::class);
+    }
 }

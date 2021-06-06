@@ -7,57 +7,68 @@
                         <tr>
                             @if ($isRoot)
                                 <th scope="col"
-                                    class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                    Região
+                                    class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-200">
+                                    {{ __('Region') }}
                                 </th>
                             @endif
                             <th scope="col"
-                                class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Dispositivo
+                                class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-200">
+                                {{ __('Device') }}
                             </th>
                             <th scope="col"
-                                class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Valor
+                                class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-200">
+                                {{ __('Value') }}
                             </th>
                             <th scope="col"
-                                class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                Data @if ($isRoot) de Atualização @endif
+                                class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-200">
+                                @if ($isLog)
+                                    {{ __('Date') }}
+                                @else
+                                    {{ __('Updated at') }}
+                                @endif
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-darker dark:divide-darker">
                         @foreach ($sensors as $sensor)
+
                             <tr class="transition-all hover:bg-gray-100 dark:hover:bg-dark hover:shadow-lg">
+
                                 @if ($isRoot)
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                         {{ $sensor->region->slug }}
                                     </td>
                                 @endif
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+
+                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     {{ $sensor->slug }}
                                 </td>
 
-
                                 @if ($isRoot)
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap"
+                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap"
                                         wire:poll.1000ms="render">
                                     @else
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                 @endif
+
                                 @if ($sensor->name === 'barrier')
                                     @if ($sensor->value)
-                                        Aberta
+                                        {{ __('Open') }}
                                     @else
-                                        Fechada
+                                        {{ __('Closed') }}
                                     @endif
                                 @else
                                     {{ $sensor->value . $sensor->unit }}
                                 @endif
+
                                 </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap" @if ($isRoot) wire:poll.1000ms="render" @endif>
-                                    {{ $sensor->updated_at }}
+
+                                <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap" @if ($isRoot) wire:poll.1000ms="render" @endif>
+                                    {{ $sensor->updated_at->format('H:i:s d-m-Y') }}
                                 </td>
+
                             </tr>
+
                         @endforeach
                     </tbody>
                 </table>

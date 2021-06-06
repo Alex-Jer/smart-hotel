@@ -30,6 +30,32 @@ Route::middleware(['auth:sanctum', 'verified'])
         $regions = Region::orderBy('name')->orderBy('number')->get(); // Receives every region from the database
 
         // Equals to true if the region exists
+        $exists = Region::where('name', $regionName)->where('number', $number)->exists();
+
+        // Returns an error if the region couldn't be found
+        if (!$exists) return 'ERROR: Region not found!';
+
+        // Finds the region
+        $region = Region::where('name', $regionName)->where('number', $number)->first();
+
+        // Stores the sensors from the specified region
+        $sensors = Sensor::where('region_id', $region->id)->get();
+
+        // Creates an array with the ID of every sensor belonging to the specified region
+        $sensorsIdArray = $sensors->pluck('id')->toArray();
+
+        // Stores the logs from every sensor from the specified region
+        $logs = Log::whereIn('sensor_id', $sensorsIdArray)->orderBy('created_at', 'desc')->get();
+
+        return view('dashboard/logs', compact('sensors', 'regions', 'region', 'logs')); // Shows the dashboard with the sensors' data
+    })->name('logs');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/regions/{region}/{number?}', function ($regionName, $number = null) {
+        // Receives every region from the database
+        $regions = Region::orderBy('name')->orderBy('number')->get();
+
+        // Equals to true if the region exists
         $exists = DB::table('regions')
             ->where('name', $regionName)
             ->where('number', $number)
@@ -45,21 +71,19 @@ Route::middleware(['auth:sanctum', 'verified'])
             ->first();
 
         // Stores the sensors from the specified region
-        $sensors = DB::table('sensors')
-            ->where('region_id', $region->id)
-            ->get();
+        $sensors = Sensor::where('region_id', $region->id)->get();
 
         // Creates an array with the ID of every sensor belonging to the specified region
         $sensorsIdArray = $sensors->pluck('id')->toArray();
 
         // Stores the logs from every sensor from the specified region
-        $logs = DB::table('logs')
-            ->whereIn('sensor_id', $sensorsIdArray)
+        $logs = DB::table('sensors')
+            ->whereIn('id', $sensorsIdArray)
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('dashboard/logs', compact('sensors', 'regions', 'region', 'logs')); // Shows the dashboard with the sensors' data
-    })->name('logs');
+        return view('dashboard/regions', compact('sensors', 'regions', 'region')); // Shows the dashboard with the sensors' data
+    })->name('regions');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

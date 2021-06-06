@@ -4,16 +4,14 @@ namespace App\Http\Livewire\Dashboard;
 
 use Livewire\Component;
 
-class Table extends Component
+class LogsTable extends Component
 {
     public $sensors;
     public $regions = null;
     public $logs = null;
-    public $isRoot = false;
-    public $isLog = false;
 
     public function render()
     {
-        return view('livewire.dashboard.table');
+        return view('livewire.dashboard.logs-table');
     }
 }

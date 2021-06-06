@@ -39,6 +39,47 @@
                     <ul>
                         <li>
                             <div class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
+                                {{ request()->is('regions*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}" id="sidebar-logs">
+
+                                <span>
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                                        </path>
+                                    </svg>
+                                </span>
+
+                                <span class="sidebar-item">Regions</span>
+
+                                <span aria-hidden="true" style="margin-left:auto">
+                                    <svg class="w-4 h-4 transition-transform transform" id="sidebar-logs-chevron"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                        </path>
+                                    </svg>
+                                </span>
+
+                            </div>
+
+                            <div class="bg-white dropdown-content dark:bg-darker sidebar-item">
+                                @foreach ($regions->unique('name') as $region)
+                                    <a href="{{ route('regions', ['region' => $region->name, 'number' => $region->number]) }}"
+                                        class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
+                                         {{ request()->is('*' . $region->name . '*') ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
+                                        <span>{{ $region->slug }}</span>
+                                    </a>
+                                @endforeach
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown" onclick="sidebarToggleSubmenu()">
+                    <ul>
+                        <li>
+                            <div class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
                                 {{ request()->is('logs*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}" id="sidebar-logs">
                                 <span>
                                     <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">

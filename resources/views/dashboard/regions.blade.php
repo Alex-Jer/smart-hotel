@@ -1,4 +1,4 @@
-<x-dashboard.master title="Logs" :regions="$regions">
+<x-dashboard.master title="Regions" :regions="$regions">
     <div class="mt-6">
         @if ($region->name == 'room')
             <h3 class="inline text-xl dark:text-light">Sensores -</h3>
@@ -7,5 +7,5 @@
             <h3 class="inline text-xl dark:text-light">Sensores - {{ $region->slug }}</h3>
         @endif
     </div>
-    <livewire:dashboard.logs-table :sensors="$sensors" :regions="$regions" :logs="$logs" />
+    <livewire:dashboard.table :sensors="$sensors" :regions="$regions" />
 </x-dashboard.master>

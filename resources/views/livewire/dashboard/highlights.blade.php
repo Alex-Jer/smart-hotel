@@ -8,9 +8,9 @@
                         <span class="text-lg font-semibold dark:text-light">
                             @if ($sensor->name === 'barrier')
                                 @if ($sensor->value)
-                                    Aberta
+                                    {{ __('Open') }}
                                 @else
-                                    Fechada
+                                    {{ __('Closed') }}
                                 @endif
                             @else
                                 {{ $sensor->value . $sensor->unit }}
@@ -25,11 +25,11 @@
         </span>
     </div>
     <div>
-        <span class="dark:text-gray-300">Atualizado em</span>
+        <span class="dark:text-gray-300">{{ __('Updated at') }}</span>
         @foreach ($sensors as $sensor)
             @if ($sensor->region->name === 'pool' && $sensor->name === 'temperature')
                 <span
-                    class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500">{{ $sensor->updated_at }}</span>
+                    class="inline-block px-2 text-sm text-white bg-green-300 rounded dark:text-ocean-500">{{ $sensor->updated_at->format('H:i:s d-m-Y') }}</span>
             @endif
         @endforeach
     </div>
