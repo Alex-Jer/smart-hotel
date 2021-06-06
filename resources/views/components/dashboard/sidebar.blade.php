@@ -140,15 +140,15 @@
 
                         <!-- Dropdown card -->
                         <div @click.away="isOpen = false" x-show.transition.opacity="isOpen"
-                            class="absolute z-10 mt-4 transform -translate-x-full bg-white rounded-md shadow-lg min-w-max">
-                            <div class="flex flex-col p-4 -space-y-px font-medium border-b">
-                                <span class="text-gray-800">{{ auth()->user()->name }}</span>
+                            class="absolute z-10 mt-4 transform -translate-x-full bg-white rounded-md shadow-lg dark:bg-darker min-w-max">
+                            <div class="flex flex-col p-4 -space-y-px font-medium border-b dark:border-teal-700">
+                                <span class="text-gray-800 dark:text-gray-200">{{ auth()->user()->name }}</span>
                                 <span class="text-sm text-gray-400">{{ auth()->user()->email }}</span>
                             </div>
                             <ul class="flex flex-col p-2 my-2 space-y-1">
                                 <li>
                                     <a href="{{ route('profile') }}"
-                                        class="block px-2 py-1 transition rounded-md hover:bg-gray-100">Profile</a>
+                                        class="block px-2 py-1 transition rounded-md dark:text-gray-200 dark:hover:bg-dark hover:bg-gray-100">Profile</a>
                                 </li>
                             </ul>
                         </div>
