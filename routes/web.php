@@ -68,3 +68,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/register', function () {
     return view('auth/register');
 })->name('register');
+
+Route::get('/profile', function () {
+    $regions = Region::orderBy('name')->orderBy('number')->get();
+    return view('profile/show', compact('regions'));
+})->name('profile');

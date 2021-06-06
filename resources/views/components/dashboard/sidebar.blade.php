@@ -130,11 +130,31 @@
 
                 <!-- Avatar button -->
                 <div class="relative">
-                    <button class="p-1 bg-gray-200 rounded-full cursor-default dark:bg-ocean-400 focus:outline-none">
-                        <img class="object-cover w-8 h-8 rounded-full" src="/img/profile_pic.png" alt="Profile Picture" />
-                    </button>
+                    <div class="relative" x-data="{ isOpen: false }">
+                        <button @click="isOpen = !isOpen" class="text-gray-700 dark:text-white drop-button focus:outline-none">
+                            {{ auth()->user()->name }}
+                            <svg class="inline h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                        </button>
 
+                        <!-- Dropdown card -->
+                        <div @click.away="isOpen = false" x-show.transition.opacity="isOpen"
+                            class="absolute z-10 mt-4 transform -translate-x-full bg-white rounded-md shadow-lg min-w-max">
+                            <div class="flex flex-col p-4 -space-y-px font-medium border-b">
+                                <span class="text-gray-800">{{ auth()->user()->name }}</span>
+                                <span class="text-sm text-gray-400">{{ auth()->user()->email }}</span>
+                            </div>
+                            <ul class="flex flex-col p-2 my-2 space-y-1">
+                                <li>
+                                    <a href="{{ route('profile') }}"
+                                        class="block px-2 py-1 transition rounded-md hover:bg-gray-100">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
