@@ -2,7 +2,7 @@
     <div class="mt-6">
         @if ($region->name == 'room')
             <h3 class="inline text-xl dark:text-light">Sensores -</h3>
-            <x-dropdown :regions="$regions" :room="$region" />
+            <x-region-dropdown :regions="$regions" :room="$region" />
         @else
             <h3 class="inline text-xl dark:text-light">Sensores - {{ $region->slug }}</h3>
         @endif

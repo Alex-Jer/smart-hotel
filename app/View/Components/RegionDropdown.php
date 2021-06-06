@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Dropdown extends Component
+class RegionDropdown extends Component
 {
     public $regions = null;
     public $room = null;
@@ -27,6 +27,6 @@ class Dropdown extends Component
      */
     public function render()
     {
-        return view('components.dropdown');
+        return view('components.region-dropdown');
     }
 }

@@ -110,7 +110,7 @@
             </div>
 
             <!-- Navbar right -->
-            <div class="relative flex items-center space-x-3">
+            <div class="relative flex items-center space-x-3 pr-7">
 
                 <!-- Desktop Right buttons -->
                 <button onclick="toggleDark()"
@@ -140,7 +140,7 @@
 
                         <!-- Dropdown card -->
                         <div @click.away="isOpen = false" x-show.transition.opacity="isOpen"
-                            class="absolute z-10 mt-4 transform -translate-x-full bg-white rounded-md shadow-lg dark:bg-darker min-w-max">
+                            class="absolute z-10 mt-4 transform bg-white rounded-md shadow-lg -translate-x-2/3 dark:bg-darker min-w-max">
                             <div class="flex flex-col p-4 -space-y-px font-medium border-b dark:border-teal-700">
                                 <span class="text-gray-800 dark:text-gray-200">{{ auth()->user()->name }}</span>
                                 <span class="text-sm text-gray-400">{{ auth()->user()->email }}</span>
@@ -157,4 +157,3 @@
             </div>
         </div>
     </header>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
