@@ -18,15 +18,14 @@ use App\Models\Log;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/', function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/', function () {
         $sensors = Sensor::all(); // Receives every sensor from the database
         $regions = Region::orderBy('name')->orderBy('number')->get(); // Receives every region from the database
         return view('dashboard/index', compact('sensors', 'regions')); // Shows the dashboard with the sensors' and region's data
     })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/logs/{region}/{number?}', function ($regionName, $number = null) {
+    Route::get('/logs/{region}/{number?}', function ($regionName, $number = null) {
         $regions = Region::orderBy('name')->orderBy('number')->get(); // Receives every region from the database
 
         // Equals to true if the region exists
@@ -50,8 +49,7 @@ Route::middleware(['auth:sanctum', 'verified'])
         return view('dashboard/logs', compact('sensors', 'regions', 'region', 'logs')); // Shows the dashboard with the sensors' data
     })->name('logs');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/regions/{region}/{number?}', function ($regionName, $number = null) {
+    Route::get('/regions/{region}/{number?}', function ($regionName, $number = null) {
         // Receives every region from the database
         $regions = Region::orderBy('name')->orderBy('number')->get();
 
@@ -85,15 +83,17 @@ Route::middleware(['auth:sanctum', 'verified'])
         return view('dashboard/regions', compact('sensors', 'regions', 'region')); // Shows the dashboard with the sensors' data
     })->name('regions');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::get('/profile', function () {
+        $regions = Region::orderBy('name')->orderBy('number')->get();
+        return view('profile/show', compact('regions'));
+    })->name('profile');
 });
+
 
 Route::get('/register', function () {
     return view('auth/register');
 })->name('register');
-
-Route::get('/profile', function () {
-    $regions = Region::orderBy('name')->orderBy('number')->get();
-    return view('profile/show', compact('regions'));
-})->name('profile');
