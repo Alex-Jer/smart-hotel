@@ -177,10 +177,10 @@
                                 <span class="text-sm text-gray-400">{{ auth()->user()->email }}</span>
                             </div>
                             <ul class="flex flex-col p-2 my-2 space-y-1">
-                                <li>
-                                    <a href="{{ route('profile') }}"
-                                        class="block px-2 py-1 transition rounded-md dark:text-gray-200 dark:hover:bg-dark hover:bg-gray-100">Profile</a>
-                                </li>
+                                <a href="{{ route('profile') }}"
+                                    class="block px-2 py-1 transition rounded-md dark:text-gray-200 dark:hover:bg-dark hover:bg-gray-100">
+                                    Profile
+                                </a>
                             </ul>
                         </div>
                     </div>

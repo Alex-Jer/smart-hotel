@@ -16,7 +16,7 @@
                                 {{ __('Device') }}
                             </th>
                             <th scope="col"
-                                class="w-1/4 px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-gray-200">
+                                class="w-1/4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase px-7 dark:text-gray-200">
                                 {{ __('Value') }}
                             </th>
                             <th scope="col"
@@ -53,12 +53,18 @@
 
                                 @if ($sensor->name === 'barrier')
                                     @if ($sensor->value)
-                                        {{ __('Open') }}
+                                        <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
+                                            {{ __('Open') }}
+                                        </span>
                                     @else
-                                        {{ __('Closed') }}
+                                        <span class="px-2 py-px text-green-800 bg-red-200 rounded-full">
+                                            {{ __('Closed') }}
+                                        </span>
                                     @endif
                                 @else
-                                    {{ $sensor->value . $sensor->unit }}
+                                    <span class="px-2">
+                                        {{ $sensor->value . $sensor->unit }}
+                                    </span>
                                 @endif
 
                                 </td>
