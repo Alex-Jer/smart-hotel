@@ -51,16 +51,14 @@
                                     <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                 @endif
 
-                                @if ($sensor->name === 'barrier')
-                                    @if ($sensor->value)
-                                        <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
-                                            {{ __('Open') }}
-                                        </span>
-                                    @else
-                                        <span class="px-2 py-px text-green-800 bg-red-200 rounded-full">
-                                            {{ __('Closed') }}
-                                        </span>
-                                    @endif
+                                @if (!$sensor->unit && $sensor->value <= 1)
+                                    @if ($sensor->value) <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
+                                    {{ __('Open') }}
+                                    </span>
+                                @else
+                                    <span class="px-2 py-px text-green-800 bg-red-200 rounded-full">
+                                    {{ __('Closed') }}
+                                    </span> @endif
                                 @else
                                     <span class="px-2">
                                         {{ $sensor->value . $sensor->unit }}
