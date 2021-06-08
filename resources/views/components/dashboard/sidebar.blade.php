@@ -8,7 +8,7 @@
     <!-- Sidebar header -->
     <div class="flex items-center justify-between flex-shrink-0 p-2 dark:text-light">
         <span class="p-2 text-xl font-semibold leading-8 tracking-wider uppercase whitespace-nowrap">
-            <span class="invisible" id="title">Smart Hotel</span>
+            <span id="title">Smart Hotel</span>
         </span>
         <button class="p-2 rounded-md lg:hidden" onclick="closeSidebarMobile()">
             <svg class="w-6 h-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -21,96 +21,86 @@
     <!-- Sidebar links -->
     <nav class="flex-1 overflow-hidden select-none hover:overflow-y-auto">
         <ul class="p-2 overflow-hidden dark:text-light">
-            <li>
-                <a href="/" class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
+            <a href="/" class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
                     {{ request()->is('/') ? 'dark:bg-ocean-700 bg-gray-200' : '' }} ">
-                    <span>
+                <span>
 
-                        <svg class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </span>
+                <span class="sidebar-item">Dashboard</span>
+            </a>
+
+            <div x-data="{ isActive: false, open: false }" class="dropdown">
+                <a href="#" @click="$event.preventDefault(); open = !open" class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
+                    {{ request()->is('regions*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}"
+                    :class="{ 'bg-primary-100 dark:bg-primary': isActive || open }" role="button" aria-haspopup="true"
+                    :aria-expanded="(open || isActive) ? 'true' : 'false'" aria-expanded="false">
+
+                    <span>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                         </svg>
                     </span>
-                    <span class="sidebar-item">Dashboard</span>
+
+                    <span class="space-x-2 sidebar-item">Regions</span>
+
+                    <span aria-hidden="true" style="margin-left:auto">
+                        <svg class="w-4 h-4 transition-transform transform" :class="{ 'rotate-180': open }"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
                 </a>
-            </li>
-            <li>
-                <div class="dropdown" onclick="sidebarToggleSubmenu()">
-                    <ul>
-                        <li>
-                            <div class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
-                                {{ request()->is('regions*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}" id="sidebar-logs">
 
-                                <span>
-                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                                        </path>
-                                    </svg>
-                                </span>
-
-                                <span class="sidebar-item">Regions</span>
-
-                                <span aria-hidden="true" style="margin-left:auto">
-                                    <svg class="w-4 h-4 transition-transform transform" id="sidebar-logs-chevron"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                                        </path>
-                                    </svg>
-                                </span>
-
-                            </div>
-
-                            <div class="bg-white dropdown-content dark:bg-darker sidebar-item">
-                                @foreach ($regions->unique('name') as $region)
-                                    <a href="{{ route('regions', ['region' => $region->name, 'number' => $region->number]) }}"
-                                        class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
-                                         {{ request()->is('*' . $region->name . '*') ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
-                                        <span>{{ $region->slug }}</span>
-                                    </a>
-                                @endforeach
-                            </div>
-
-                        </li>
-                    </ul>
+                <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components"
+                    style="display: none; padding-left: 2.05rem;">
+                    @foreach ($regions->unique('name') as $region)
+                        <a href="{{ route('regions', ['region' => $region->name, 'number' => $region->number]) }}"
+                            class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
+                                         {{ request()->is('regions/' . $region->name . '*') ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
+                            <span>{{ $region->slug }}</span>
+                        </a>
+                    @endforeach
                 </div>
-            </li>
-            <li>
-                <div class="dropdown" onclick="sidebarToggleSubmenu()">
-                    <ul>
-                        <li>
-                            <div class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
-                                {{ request()->is('logs*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}" id="sidebar-logs">
-                                <span>
-                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
-                                        </path>
-                                    </svg>
-                                </span>
-                                <span class="sidebar-item">Logs</span>
-                                <span aria-hidden="true" style="margin-left:auto">
-                                    <svg class="w-4 h-4 transition-transform transform" id="sidebar-logs-chevron"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                                        </path>
-                                    </svg>
-                                </span>
-                            </div>
+            </div>
+            <div x-data="{ isActive: false, open: false }" class="dropdown">
+                <a href="#" @click="$event.preventDefault(); open = !open" class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
+                    {{ request()->is('logs*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}"
+                    :class="{ 'bg-primary-100 dark:bg-primary': isActive || open }" role="button" aria-haspopup="true"
+                    :aria-expanded="(open || isActive) ? 'true' : 'false'" aria-expanded="false">
 
-                            <div class="bg-white dropdown-content dark:bg-darker sidebar-item">
-                                @foreach ($regions->unique('name') as $region)
-                                    <a href="{{ route('logs', ['region' => $region->name, 'number' => $region->number]) }}"
-                                        class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
-                                         {{ request()->is('*' . $region->name . '*') ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
-                                        <span>{{ $region->slug }}</span>
-                                    </a>
-                                @endforeach
-                            </div>
-                        </li>
-                    </ul>
+                    <span>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#9ca3af">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </span>
+
+                    <span class="space-x-2 sidebar-item">Logs</span>
+
+                    <span aria-hidden="true" style="margin-left:auto">
+                        <svg class="w-4 h-4 transition-transform transform" :class="{ 'rotate-180': open }"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
+                </a>
+
+                <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components"
+                    style="display: none; padding-left: 2.05rem;">
+                    @foreach ($regions->unique('name') as $region)
+                        <a href="{{ route('logs', ['region' => $region->name, 'number' => $region->number]) }}"
+                            class="flex items-center p-2 space-x-2 rounded-md dark:hover:bg-dark hover:bg-gray-100
+                                         {{ request()->is('logs/' . $region->name . '*') ? 'dark:text-gray-100 text-gray-500 font-medium' : 'text-gray-400' }}">
+                            <span>{{ $region->slug }}</span>
+                        </a>
+                    @endforeach
                 </div>
-            </li>
+            </div>
         </ul>
     </nav>
 
@@ -181,7 +171,7 @@
 
                         <!-- Dropdown card -->
                         <div @click.away="isOpen = false" x-show.transition.opacity="isOpen"
-                            class="absolute z-10 mt-4 transform bg-white rounded-md shadow-lg -translate-x-2/3 dark:bg-darker min-w-max">
+                            class="absolute z-10 mt-4 transform bg-white rounded-md shadow-lg -translate-x-1/4 dark:bg-darker min-w-max">
                             <div class="flex flex-col p-4 -space-y-px font-medium border-b dark:border-teal-700">
                                 <span class="text-gray-800 dark:text-gray-200">{{ auth()->user()->name }}</span>
                                 <span class="text-sm text-gray-400">{{ auth()->user()->email }}</span>

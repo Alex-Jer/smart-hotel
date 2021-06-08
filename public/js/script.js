@@ -1,26 +1,5 @@
 // Sidebar
 const sidebarItems = document.querySelectorAll('.sidebar-item');
-const sidebarSubmenu = document.querySelectorAll('.dropdown-content');
-
-const openSidebar = () => {
-    document.getElementById('sidebar').style.width = '270px';
-    document.getElementById('title').classList.remove('invisible');
-    document.getElementById('logout').classList.remove('hidden');
-
-    sidebarItems.forEach((el) => {
-        el.classList.remove('invisible');
-    });
-};
-
-const closeSidebar = () => {
-    document.getElementById('sidebar').style.width = '60px';
-    document.getElementById('title').classList.add('invisible');
-    document.getElementById('logout').classList.add('hidden');
-
-    sidebarItems.forEach((el) => {
-        el.classList.add('invisible');
-    });
-};
 
 const openSidebarMobile = () => {
     document.getElementById('sidebar').style.width = '270px';
@@ -36,12 +15,6 @@ const closeSidebarMobile = () => {
     document.getElementById('sidebar').style.width = '0';
     document.querySelector('.sidebar-backdrop').classList.add('invisible');
 };
-
-if (window.screen.availWidth >= 1024) {
-    closeSidebar();
-} else {
-    closeSidebarMobile();
-}
 
 // Modo Escuro
 const sunIcon = document.getElementById('sun-icon');
@@ -71,24 +44,3 @@ const toggleDark = () => {
         moonIcon.classList.remove('hidden');
     }
 };
-
-const sidebarToggleSubmenu = () => {
-    sidebarSubmenu.forEach((el) => {
-        const element = el;
-        if (!element.style.display) {
-            element.style.display = 'block';
-        } else {
-            element.style.display = null;
-        }
-    });
-};
-
-const sidebarLogsButton = document.getElementById('sidebar-logs');
-const sidebarLogsChevron = document.getElementById('sidebar-logs-chevron');
-
-sidebarLogsButton.addEventListener('click', (event) => {
-    if (sidebarLogsChevron.classList.contains('rotate-180')) {
-        return sidebarLogsChevron.classList.remove('rotate-180');
-    }
-    return sidebarLogsChevron.classList.add('rotate-180');
-});
