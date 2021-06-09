@@ -32,11 +32,25 @@
 
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
 
-                                    @if ($log->sensor->name === 'barrier')
+                                    @if ($log->sensor->unit === 'c_o')
                                         @if ($log->value)
-                                            {{ __('Open') }}
+                                            <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
+                                                {{ __('Open') }}
+                                            </span>
                                         @else
-                                            {{ __('Closed') }}
+                                            <span class="px-2 py-px text-green-800 bg-red-200 rounded-full">
+                                                {{ __('Closed') }}
+                                            </span>
+                                        @endif
+                                    @elseif($log->sensor->unit === 'off_on')
+                                        @if ($log->value)
+                                            <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
+                                                {{ __('ON') }}
+                                            </span>
+                                        @else
+                                            <span class="px-2 py-px text-green-800 bg-red-200 rounded-full">
+                                                {{ __('OFF') }}
+                                            </span>
                                         @endif
                                     @else
                                         {{ $log->sensor->value . $log->sensor->unit }}

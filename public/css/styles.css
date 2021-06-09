@@ -1,37 +1,19 @@
-.bg-image-login {
-    /* Definir imagem e aplicando um filtro para a mesma ficar mais escura */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('https://capmagellan.com/wp-content/uploads/2017/04/170405-Leiria-photo-Gil-Quintino.jpg');
-
-    /* Efeito de Desfoque à Imagem */
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-
-    /* Definir os limites do background */
-    left: -10px;
-    top: -10px;
-    bottom: -10px;
-    position: fixed;
-    right: -10px;
-    z-index: -1;
-
-    /* Definições do Background */
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
+/* CHECKBOX TOGGLE SWITCH */
+/* @apply rules for documentation, these do not work as inline style */
+.toggle-checkbox {
+    border-color: #d1d5db !important;
 }
 
-.sidebar-backdrop {
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+.toggle-checkbox:focus {
+    --tw-ring-offset-width: 0 !important;
 }
 
-.dropdown-content {
-    display: none;
-    min-width: 160px;
-    padding: 5px 0px 5px 36px;
+.toggle-checkbox:checked {
+    right: 0;
+    border-color: #22d3ee !important;
+    border-width: 4px;
 }
 
-/* .dropdown:active .dropdown-content {
-    display: block;
-} */
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #22d3ee;
+}
