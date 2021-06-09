@@ -22,7 +22,7 @@
         "lodash": "^4.17.19",
         "postcss": "^8.3.0",
         "postcss-import": "^14.0.1",
-        "tailwindcss": "^2.1.4"
+        "tailwindcss": "^2.0.4"
     },
     "dependencies": {
         "autoprefixer": "^10.2.6"
