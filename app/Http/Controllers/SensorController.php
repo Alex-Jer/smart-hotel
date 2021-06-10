@@ -86,8 +86,8 @@ class SensorController extends Controller
     public function show(Request $request)
     {
         // Checks if the necessary parameters exist
-        if (!$request->name || !$request->region_name || !$request->type)
-            return response('ERROR: Invalid parameters! Must contain [name] [region_name] [type]');
+        if (!$request->name || !$request->region_name)
+            return response('ERROR: Invalid parameters! Must contain [name] [region_name]', 400);
 
 
         // Equals to true if the region exists and has a number (e.g. Room 3)
@@ -97,7 +97,7 @@ class SensorController extends Controller
             ->exists();
 
         // Returns an error if the region couldn't be found
-        if (!$exists) return response('ERROR: Region not found!');
+        if (!$exists) return response('ERROR: Region not found!', 400);
 
         // Finds the region_id
         $region_id = DB::table('regions')
@@ -112,7 +112,7 @@ class SensorController extends Controller
             ->first();
 
         // Returns the sensor's data
-        return $sensor->updated_at . ';' . $sensor->value;
+        return $sensor->value;
     }
 
     /**
