@@ -3,7 +3,7 @@
     <!-- Sensores -->
     <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-3">
 
-        <livewire:dashboard.highlights :sensors="$sensors" region="foyer" sensorName="door" svg="door" />
+        <livewire:dashboard.highlights :sensors="$sensors" region="foyer" sensorName="lights" svg="lightbulb" />
 
         <livewire:dashboard.highlights :sensors="$sensors" region="garden" sensorName="sprinklers" svg="faucet" />
 

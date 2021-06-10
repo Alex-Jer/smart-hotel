@@ -27,14 +27,7 @@
             @endforeach
         </div>
         <span class="mr-0.5 text-gray-300 dark:text-gray-300">
-            @if ($svg === 'door')
-                <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 1700" fill="currentColor">
-                    <path
-                        d="M140 1c-18 3-31 6-45 13C48 36 15 79 3 133l-3 10v1558h1278V137l-2-10A169 169 0 001154 3l-10-3H643L140 1zm839 748c32 6 61 28 76 57a106 106 0 11-76-57z" />
-                </svg>
-            @else
-                <i class="fas fa-5x fa-{{ $svg }}"></i>
-            @endif
+            <i class="fas fa-5x fa-{{ $svg }}"></i>
         </span>
     </div>
     <div>
