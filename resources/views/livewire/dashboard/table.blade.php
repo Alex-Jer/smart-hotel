@@ -30,18 +30,18 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 dark:bg-darker dark:divide-darker">
-                        @foreach ($sensors as $sensor)
+                        @foreach ($devices as $device)
 
                             <tr class="transition-all hover:bg-gray-100 dark:hover:bg-dark hover:shadow-lg">
 
                                 @if ($isRoot)
                                     <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                        {{ $sensor->region->slug }}
+                                        {{ $device->region->slug }}
                                     </td>
                                 @endif
 
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    {{ $sensor->slug }}
+                                    {{ $device->slug }}
                                 </td>
 
                                 @if ($isRoot)
@@ -51,8 +51,8 @@
                                     <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                 @endif
 
-                                @if ($sensor->unit === 'c_o')
-                                    @if ($sensor->value)
+                                @if ($device->unit === 'c_o')
+                                    @if ($device->value)
                                         <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
                                             {{ __('Open') }}
                                         </span>
@@ -61,8 +61,8 @@
                                             {{ __('Closed') }}
                                         </span>
                                     @endif
-                                @elseif($sensor->unit === 'off_on')
-                                    @if ($sensor->value)
+                                @elseif($device->unit === 'off_on')
+                                    @if ($device->value)
                                         <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
                                             {{ __('ON') }}
                                         </span>
@@ -73,14 +73,14 @@
                                     @endif
                                 @else
                                     <span class="px-2">
-                                        {{ $sensor->value . $sensor->unit }}
+                                        {{ $device->value . $device->unit }}
                                     </span>
                                 @endif
 
                                 </td>
 
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap" @if ($isRoot) wire:poll.1000ms="render" @endif>
-                                    {{ $sensor->updated_at->format('H:i:s d-m-Y') }}
+                                    {{ $device->updated_at->format('H:i:s d-m-Y') }}
                                 </td>
 
                             </tr>

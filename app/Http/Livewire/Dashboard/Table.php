@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Table extends Component
 {
-    public $sensors;
+    public $devices;
     public $regions = null;
     public $logs = null;
     public $isRoot = false;

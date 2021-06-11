@@ -27,12 +27,12 @@
                             <tr class="transition-all hover:bg-gray-100 dark:hover:bg-dark hover:shadow-lg">
 
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    {{ $log->sensor->slug }}
+                                    {{ $log->actuator->slug }}
                                 </td>
 
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
 
-                                    @if ($log->sensor->unit === 'c_o')
+                                    @if ($log->actuator->unit === 'c_o')
                                         @if ($log->value)
                                             <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
                                                 {{ __('Open') }}
@@ -42,7 +42,7 @@
                                                 {{ __('Closed') }}
                                             </span>
                                         @endif
-                                    @elseif($log->sensor->unit === 'off_on')
+                                    @elseif($log->actuator->unit === 'off_on')
                                         @if ($log->value)
                                             <span class="px-2 py-px text-green-800 bg-green-200 rounded-full">
                                                 {{ __('ON') }}
@@ -53,13 +53,13 @@
                                             </span>
                                         @endif
                                     @else
-                                        {{ $log->sensor->value . $log->sensor->unit }}
+                                        {{ $log->actuator->value . $log->actuator->unit }}
                                     @endif
 
                                 </td>
 
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    {{ $log->sensor->created_at->format('H:i:s d-m-Y') }}
+                                    {{ $log->actuator->created_at->format('H:i:s d-m-Y') }}
                                 </td>
 
                             </tr>

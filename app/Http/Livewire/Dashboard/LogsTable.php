@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class LogsTable extends Component
 {
-    public $sensors;
+    public $actuators;
     public $regions = null;
     public $logs = null;
 

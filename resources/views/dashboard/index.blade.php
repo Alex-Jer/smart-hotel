@@ -1,19 +1,22 @@
 <x-dashboard.master title="Dashboard" :regions="$regions" isRoot="true">
 
-    <!-- Sensores -->
+    <!-- Highlighted Actuators -->
     <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-3">
 
-        <livewire:dashboard.highlights :sensors="$sensors" region="foyer" sensorName="lights" svg="lightbulb" />
+        <livewire:dashboard.highlights :actuators="$actuators" region="foyer" actuatorName="lights" svg="lightbulb" />
 
-        <livewire:dashboard.highlights :sensors="$sensors" region="garden" sensorName="sprinklers" svg="faucet" />
+        <livewire:dashboard.highlights :actuators="$actuators" region="garden" actuatorName="sprinklers" svg="faucet" />
 
-        <livewire:dashboard.highlights :sensors="$sensors" region="parking" sensorName="barrier" svg="parking" />
+        <livewire:dashboard.highlights :actuators="$actuators" region="parking" actuatorName="barrier" svg="parking" />
 
     </div>
 
-    <!-- Tabela de Sensores -->
-    <h3 class="mt-6 text-xl dark:text-light">Tabela de Sensores</h3>
+    <!-- Actuators Table -->
+    <h3 class="mt-6 text-xl dark:text-light">Actuators</h3>
+    <livewire:dashboard.table :devices="$actuators" isRoot=true />
 
-    <livewire:dashboard.table :sensors="$sensors" isRoot=true />
+    <!-- Sensors Table -->
+    <h3 class="mt-6 text-xl dark:text-light">Sensors</h3>
+    <livewire:dashboard.table :devices="$sensors" isRoot=true />
 
 </x-dashboard.master>

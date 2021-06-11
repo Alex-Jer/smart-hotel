@@ -21,4 +21,14 @@ class Log extends Model
     {
         return $this->belongsTo(Sensor::class);
     }
+
+    /**
+     * Get the actuator that owns the Log.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function actuator()
+    {
+        return $this->belongsTo(Actuator::class);
+    }
 }

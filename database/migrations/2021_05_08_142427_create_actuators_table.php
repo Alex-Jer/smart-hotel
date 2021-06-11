@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogsTable extends Migration
+class CreateActuatorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('actuators', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('actuator_id')->references('id')->on('actuators')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('name');
+            $table->string('slug');
+            $table->foreignId('region_id')->references('id')->on('regions')->onUpdate('cascade')->onDelete('cascade');
             $table->double('value');
+            $table->string('unit')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('actuators');
     }
 }

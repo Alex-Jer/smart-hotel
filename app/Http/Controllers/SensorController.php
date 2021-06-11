@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\Models\Log;
 use App\Models\Sensor;
 use Illuminate\Http\Request;
 
@@ -167,12 +166,6 @@ class SensorController extends Controller
 
         // Updates the sensor's value with the request's value
         $sensor->value = $request->value;
-
-        // Saves a new log
-        $log = new Log;
-        $log->sensor_id = $sensor->id;
-        $log->value = $sensor->value;
-        $log->save();
 
         // Saves the new value into the database
         return $sensor->save();

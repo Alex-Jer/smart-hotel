@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\SensorController;
+use App\Http\Controllers\ActuatorController;
 use App\Http\Controllers\UploadController;
-use App\Models\Sensor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SensorController::class, 'show']);
+Route::get('/sensor', [SensorController::class, 'show']);
 
-Route::post('/', [SensorController::class, 'update']);
+Route::post('/sensor', [SensorController::class, 'update']);
+
+Route::get('/actuator', [ActuatorController::class, 'show']);
+
+Route::post('/actuator', [ActuatorController::class, 'update']);
 
 Route::post('/upload', [UploadController::class, 'upload']);
 

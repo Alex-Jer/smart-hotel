@@ -1,25 +1,26 @@
 <div class="p-4 transition-shadow border rounded-lg shadow-sm dark:border-teal-700 hover:shadow-lg">
     <div class="flex items-start justify-between">
         <div class="flex flex-col space-y-2">
-            @foreach ($sensors as $sensor)
-                @if ($sensor->region->name === $region && $sensor->name === $sensorName)
-                    <span class="text-gray-400 dark:text-gray-300">{{ $sensor->region->slug . ' - ' . $sensor->slug }}</span>
+            @foreach ($actuators as $actuator)
+                @if ($actuator->region->name === $region && $actuator->name === $actuatorName)
+                    <span
+                        class="text-gray-400 dark:text-gray-300">{{ $actuator->region->slug . ' - ' . $actuator->slug }}</span>
                     <span class="text-lg font-semibold dark:text-light" wire:poll.1000ms="render">
                         <span class="text-lg font-semibold dark:text-light">
-                            @if ($sensor->unit === 'c_o')
-                                @if ($sensor->value)
+                            @if ($actuator->unit === 'c_o')
+                                @if ($actuator->value)
                                     {{ __('Open') }}
                                 @else
                                     {{ __('Closed') }}
                                 @endif
-                            @elseif ($sensor->unit === 'off_on')
-                                @if ($sensor->value)
+                            @elseif ($actuator->unit === 'off_on')
+                                @if ($actuator->value)
                                     {{ __('ON') }}
                                 @else
                                     {{ __('OFF') }}
                                 @endif
                             @else
-                                {{ $sensor->value . $sensor->unit }}
+                                {{ $actuator->value . $actuator->unit }}
                             @endif
                         </span>
                     </span>
@@ -32,13 +33,13 @@
     </div>
     <div>
         <span class="dark:text-gray-300">{{ __('Updated at') }}</span>
-        @foreach ($sensors as $sensor)
-            @if ($sensor->region->name === $region && $sensor->name === $sensorName)
+        @foreach ($actuators as $actuator)
+            @if ($actuator->region->name === $region && $actuator->name === $actuatorName)
                 <span class="inline-block px-2 text-sm text-white bg-green-300 rounded mt-7 dark:text-ocean-500">
-                    {{ $sensor->updated_at->format('H:i:s d-m-Y') }}
+                    {{ $actuator->updated_at->format('H:i:s d-m-Y') }}
                 </span>
-                <livewire:dashboard.toggle-button :sensor="$sensor" value="{{ !$sensor->value }}" field="value"
-                    key="{{ $sensor->id }}" />
+                <livewire:dashboard.toggle-button :actuator="$actuator" value="{{ !$actuator->value }}" field="value"
+                    key="{{ $actuator->id }}" />
             @endif
         @endforeach
     </div>

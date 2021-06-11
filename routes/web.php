@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\SensorController;
 use App\Models\Sensor;
+use App\Models\Actuator;
 use App\Models\Region;
 use App\Models\Log;
 
@@ -21,12 +21,14 @@ use App\Models\Log;
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/', function () {
         $sensors = Sensor::orderBy('region_id')->get(); // Receives every sensor from the database
+        $actuators = Actuator::orderBy('region_id')->get(); // Receives every actuator from the database
         $regions = Region::orderBy('name')->orderBy('number')->get(); // Receives every region from the database
-        return view('dashboard/index', compact('sensors', 'regions')); // Shows the dashboard with the sensors' and region's data
+        return view('dashboard/index', compact('sensors', 'actuators', 'regions')); // Shows the dashboard with the sensors', actuators' and regions' data
     })->name('dashboard');
 
     Route::get('/logs/{region}/{number?}', function ($regionName, $number = null) {
-        $regions = Region::orderBy('name')->orderBy('number')->get(); // Receives every region from the database
+        // Receives every region from the database
+        $regions = Region::orderBy('name')->orderBy('number')->get();
 
         // Equals to true if the region exists
         $exists = Region::where('name', $regionName)->where('number', $number)->exists();
@@ -37,16 +39,24 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         // Finds the region
         $region = Region::where('name', $regionName)->where('number', $number)->first();
 
-        // Stores the sensors from the specified region
+        // Stores the sensors and actuators from the specified region
         $sensors = Sensor::where('region_id', $region->id)->get();
+        $actuators = Actuator::where('region_id', $region->id)->get();
 
-        // Creates an array with the ID of every sensor belonging to the specified region
-        $sensorsIdArray = $sensors->pluck('id')->toArray();
+        // Creates an array with the ID of every actuator belonging to the specified region
+        $actuatorsIdArray = $actuators->pluck('id')->toArray();
 
-        // Stores the logs from every sensor from the specified region
-        $logs = Log::whereIn('sensor_id', $sensorsIdArray)->orderBy('created_at', 'desc')->get();
+        // Stores the logs from every actuator from the specified region
+        $logs = Log::whereIn('actuator_id', $actuatorsIdArray)->orderBy('created_at', 'desc')->get();
 
-        return view('dashboard/logs', compact('sensors', 'regions', 'region', 'logs')); // Shows the dashboard with the sensors' data
+        // Shows the dashboard with the sensors' data
+        return view('dashboard/logs', compact(
+            'sensors',
+            'actuators',
+            'regions',
+            'region',
+            'logs'
+        ));
     })->name('logs');
 
     Route::get('/regions/{region}/{number?}', function ($regionName, $number = null) {
@@ -68,19 +78,20 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
             ->where('number', $number)
             ->first();
 
-        // Stores the sensors from the specified region
+        // Stores the sensors and actuators from the specified region
         $sensors = Sensor::where('region_id', $region->id)->get();
+        $actuators = Actuator::where('region_id', $region->id)->get();
 
-        // Creates an array with the ID of every sensor belonging to the specified region
-        $sensorsIdArray = $sensors->pluck('id')->toArray();
+        // Creates an array with the ID of every actuator belonging to the specified region
+        $actuatorsIdArray = $actuators->pluck('id')->toArray();
 
-        // Stores the logs from every sensor from the specified region
-        $logs = DB::table('sensors')
-            ->whereIn('id', $sensorsIdArray)
+        // Stores the logs from every actuator from the specified region
+        $logs = DB::table('actuators')
+            ->whereIn('id', $actuatorsIdArray)
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('dashboard/regions', compact('sensors', 'regions', 'region')); // Shows the dashboard with the sensors' data
+        return view('dashboard/regions', compact('sensors', 'actuators', 'regions', 'region')); // Shows the dashboard with the sensors' data
     })->name('regions');
 
     Route::get('/user', function (Request $request) {

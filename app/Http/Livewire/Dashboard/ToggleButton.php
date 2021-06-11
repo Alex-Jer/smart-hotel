@@ -6,13 +6,13 @@ use Livewire\Component;
 
 class ToggleButton extends Component
 {
-    public $sensor;
+    public $actuator;
     public $field;
     public $isToggled;
 
     public function mount()
     {
-        $this->isToggled = (bool) $this->sensor->getAttribute($this->field);
+        $this->isToggled = (bool) $this->actuator->getAttribute($this->field);
     }
 
     public function render()
@@ -22,6 +22,6 @@ class ToggleButton extends Component
 
     public function updating($field, $value)
     {
-        $this->sensor->setAttribute($this->field, $value)->save();
+        $this->actuator->setAttribute($this->field, $value)->save();
     }
 }

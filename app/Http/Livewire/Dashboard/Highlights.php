@@ -6,9 +6,9 @@ use Livewire\Component;
 
 class Highlights extends Component
 {
-    public $sensors;
+    public $actuators;
     public $region;
-    public $sensorName;
+    public $actuatorName;
     public $svg;
 
     public function render()

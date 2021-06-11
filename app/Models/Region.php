@@ -22,4 +22,14 @@ class Region extends Model
         return $this->hasMany(Sensor::class);
         // return $this->hasMany(Sensor::class, 'foreign_key', 'local_key');
     }
+
+    /**
+     * Get all of the actuators for the Region
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function actuator()
+    {
+        return $this->hasMany(Actuator::class);
+    }
 }

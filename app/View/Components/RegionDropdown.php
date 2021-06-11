@@ -7,17 +7,17 @@ use Illuminate\View\Component;
 class RegionDropdown extends Component
 {
     public $regions = null;
-    public $room = null;
+    public $numberedRegion = null;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($regions, $room)
+    public function __construct($regions, $numberedRegion)
     {
         $this->regions = $regions;
-        $this->room = $room;
+        $this->numberedRegion = $numberedRegion;
     }
 
     /**

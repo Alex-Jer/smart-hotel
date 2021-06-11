@@ -8,19 +8,22 @@ class Master extends Component
 {
     public $title;
     public $regions;
+    public $numberedRegion;
     public $isRoot;
 
     /**
      * Create a new component instance.
      * @param  string  $title
-     * @param  string  $regions
-     * @param  bool    $isRoot
+     * @param  collection  $regions
+     * @param  region  $numberedRegion
+     * @param  bool $isRoot
      * @return void
      */
-    public function __construct($title, $regions, $isRoot = false)
+    public function __construct($title, $regions, $numberedRegion = null, $isRoot = false)
     {
         $this->title = $title;
         $this->regions = $regions;
+        $this->numberedRegion = $numberedRegion;
         $this->isRoot = $isRoot;
     }
 
