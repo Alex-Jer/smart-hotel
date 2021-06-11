@@ -110,6 +110,9 @@ class SensorController extends Controller
             ->where('name', $request->name)
             ->first();
 
+        // Returns an error if the sensor couldn't be found
+        if (!$sensor) return response('ERROR: Sensor not found!', 400);
+
         // Returns the sensor's data
         return $sensor->value;
     }

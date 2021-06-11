@@ -43,6 +43,9 @@ class ActuatorController extends Controller
             ->where('name', $request->name)
             ->first();
 
+        // Returns an error if the region couldn't be found
+        if (!$actuator) return response('ERROR: Actuator not found!', 400);
+
         // Returns the actuator's data
         return $actuator->value;
     }
