@@ -20,7 +20,7 @@ use App\Models\Log;
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/', function () {
-        $sensors = Sensor::all(); // Receives every sensor from the database
+        $sensors = Sensor::orderBy('region_id')->get(); // Receives every sensor from the database
         $regions = Region::orderBy('name')->orderBy('number')->get(); // Receives every region from the database
         return view('dashboard/index', compact('sensors', 'regions')); // Shows the dashboard with the sensors' and region's data
     })->name('dashboard');
