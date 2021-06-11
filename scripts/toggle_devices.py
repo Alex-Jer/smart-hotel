@@ -1,6 +1,6 @@
 from msvcrt import getch, kbhit
 
-import requests
+from requests import get, post
 
 
 def post_to_api(data):
@@ -10,7 +10,7 @@ def post_to_api(data):
         "value": data[2],
     }
 
-    r = requests.post("http://projeto-ti.test/api", data=payload)
+    r = post("http://projeto-ti.test/api", data=payload)
 
     if r.status_code != 200:
         print("Request error!")
@@ -18,7 +18,7 @@ def post_to_api(data):
 
 
 def get_from_api(sensor_name, region_name):
-    r = requests.get("http://projeto-ti.test/api?name=" + sensor_name + "&region_name=" + region_name)
+    r = get("http://projeto-ti.test/api?name=" + sensor_name + "&region_name=" + region_name)
     if r.status_code != 200:
         return print("Request error!")
     is_toggled = r.json()

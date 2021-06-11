@@ -1,13 +1,13 @@
 from time import sleep
 
 import cv2 as cv
-from requests import get, post
+import requests
 
 
 def send_file():
     url = "http://labs-ti.test/public/upload.php"
     files = {"imagem": open("scripts/webcam.png", "rb")}
-    r = post(url, files=files)
+    r = requests.post(url, files=files)
 
     if r.status_code == 200:
         print(r.text)
@@ -17,7 +17,7 @@ def send_file():
 
 
 def get_temp(camera):
-    r = get("http://labs-ti.test/api/api.php?nome=temperatura")
+    r = requests.get("http://labs-ti.test/api/api.php?nome=temperatura")
     if r.status_code == 200:
         temp_value = r.json()
         if temp_value > -90:
