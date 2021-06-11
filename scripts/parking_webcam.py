@@ -1,45 +1,66 @@
+from datetime import datetime
+from os import remove
 from time import sleep
 
-import cv2 as cv
-import requests
+from cv2 import VideoCapture, destroyAllWindows, imwrite
+from requests import get, post
 
 
-def send_file():
-    url = "http://labs-ti.test/public/upload.php"
-    files = {"imagem": open("scripts/webcam.png", "rb")}
-    r = requests.post(url, files=files)
+def post_file(file):
+    url = "http://projeto-ti.test/api/upload"
 
-    if r.status_code == 200:
-        print(r.text)
-    else:
-        print("O pedido HTTP não foi bem sucedido")
-        print(r.text)
+    # Opens the image
+    f = open(file, "rb")
+    image = {"image": f}
+
+    # Sends the image to the server
+    r = post(url, files=image, data={"location": "parking"})
+
+    # If the POST wasn't successful
+    if r.status_code != 200:
+        print("POST error!\n" + r.text)
+        return
+
+    # Closes and deletes the file after a successful POST
+    f.close()
+    remove(file)
 
 
-def get_temp(camera):
-    r = requests.get("http://labs-ti.test/api/api.php?nome=temperatura")
-    if r.status_code == 200:
-        temp_value = r.json()
-        if temp_value > -90:
-            print("Temperatura HIGH: " + str(temp_value))
-            ret, image = camera.read()
-            cv.imwrite("scripts/webcam.png", image)
-            send_file()
-        else:
-            print("Temperatura LOW: " + str(temp_value))
-    else:
-        print("O pedido HTTP não foi bem sucedido")
+def upload_picture_when_open(camera):
+    r = get("http://projeto-ti.test/api?name=barrier&region_name=parking")
+
+    # If the GET wasn't sucessful
+    if r.status_code != 200:
+        print("GET error!")
+        return
+
+    # Creates a string with the current time (e.g. "11-06-2021 19_02_26")
+    now = datetime.now().strftime("%d-%m-%Y %H_%M_%S")
+
+    # Creates a string with the filename (e.g "11-06-2021 19_02_26.png")
+    file = now + ".png"
+
+    # Stores the barrier's state returned by the GET request (0 - Closed / 1 - Open)
+    is_open = r.json()
+
+    # If the barrier is open (0 - Closed / 1 - Open)
+    if is_open:
+        print("Picture taken: " + now)
+        ret, pic = camera.read()
+        imwrite(file, pic)
+        post_file(file)
 
 
 try:
-    camera = cv.VideoCapture(0)
-    print("Prima CTRL+C para terminar")
+    # Readies the camera
+    camera = VideoCapture(0)
+    print("This program is responsible for taking a picture every time the parking barrier opens.")
+    print("Press CTRL+C to exit the program.")
     while True:
-        get_temp(camera)
+        upload_picture_when_open(camera)
         sleep(5)
 except KeyboardInterrupt:
+    # Shuts the camera down and exits
     camera.release()
-    cv.destroyAllWindows()
-    print("Programa terminado pelo utilizador")
-finally:
-    print("Fim do programa")
+    destroyAllWindows()
+    print("Program exited by user.")
