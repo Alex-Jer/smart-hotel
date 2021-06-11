@@ -12,15 +12,15 @@ def post_to_api(data):
     }
 
     # Sends the payload to the server
-    r = post("http://projeto-ti.test/api", data=payload)
+    r = post("http://projeto-ti.test/api/actuator", data=payload)
 
     # If the POST wasn't successful
     if r.status_code != 200:
         print("Request error!" + r.text)
 
 
-def get_from_api(sensor_name, region_name):
-    r = get("http://projeto-ti.test/api?name=" + sensor_name + "&region_name=" + region_name)
+def get_from_api(actuator_name, region_name):
+    r = get("http://projeto-ti.test/api/actuator?name=" + actuator_name + "&region_name=" + region_name)
 
     # If the GET request wasn't successful
     if r.status_code != 200:

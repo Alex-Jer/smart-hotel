@@ -27,7 +27,7 @@ def post_file(file):
 
 
 def upload_picture_when_open(camera):
-    r = get("http://projeto-ti.test/api?name=barrier&region_name=parking")
+    r = get("http://projeto-ti.test/api/actuator?name=barrier&region_name=parking")
 
     # If the GET wasn't sucessful
     if r.status_code != 200:
