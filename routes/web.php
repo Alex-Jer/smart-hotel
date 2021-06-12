@@ -108,7 +108,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         $path = public_path('storage/parking');
         $images = File::allFiles($path);
         foreach ($images as $key => $image) {
-            if ($image->getSize() > 1024000) { // If the image is bigger than 100kib
+            // If the image is bigger than 100kib or the file type isn't either .png or .jpg
+            if ($image->getSize() > 1024000 || ($image->getExtension() != 'png' && $image->getExtension() != 'jpg')) {
                 unset($images[$key]);
             }
         }
