@@ -59,7 +59,7 @@
                                 </td>
 
                                 <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    {{ $log->actuator->created_at->format('H:i:s d-m-Y') }}
+                                    {{ $log->created_at->format('H:i:s d-m-Y') }}
                                 </td>
 
                             </tr>
