@@ -102,6 +102,18 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         $regions = Region::orderBy('name')->orderBy('number')->get();
         return view('profile/show', compact('regions'));
     })->name('profile');
+
+    Route::get('/camera', function () {
+        $regions = Region::orderBy('name')->orderBy('number')->get();
+        $path = public_path('storage/parking');
+        $images = File::allFiles($path);
+        foreach ($images as $key => $image) {
+            if ($image->getSize() > 1024000) { // If the image is bigger than 100kib
+                unset($images[$key]);
+            }
+        }
+        return view('dashboard/camera', compact('regions', 'images'));
+    })->name('camera');
 });
 
 

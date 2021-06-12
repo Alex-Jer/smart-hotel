@@ -67,6 +67,7 @@
                     @endforeach
                 </div>
             </div>
+
             <div x-data="{ isActive: false, open: false }" class="dropdown">
                 <a href="#" @click="$event.preventDefault(); open = !open" class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
                     {{ request()->is('logs*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}"
@@ -101,6 +102,17 @@
                     @endforeach
                 </div>
             </div>
+
+            <a href="{{ route('camera') }}" class="flex items-center p-2 space-x-2 rounded-md cursor-pointer dark:hover:bg-dark hover:bg-gray-100
+                    {{ request()->is('camera*') ? 'dark:bg-ocean-700 bg-gray-200' : '' }}">
+                <span>
+                    <svg class="w-6 h-6 text-gray-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path stroke="#e3e5e8"
+                            d="M 2 8 L 2 24 L 24 24 L 24 20.625 L 30 23.625 L 30 8.375 L 24 11.375 L 24 8 Z M 4 10 L 22 10 L 22 22 L 4 22 Z M 28 11.625 L 28 20.375 L 24 18.375 L 24 13.625 Z" />
+                    </svg>
+                </span>
+                <span class="sidebar-item">Security Camera</span>
+            </a>
         </ul>
     </nav>
 
