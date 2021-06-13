@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
+/public/storage/parking/*
 /storage/*.key
+/storage
 /vendor
 .env
 .env.backup
