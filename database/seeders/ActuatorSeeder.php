@@ -61,6 +61,15 @@ class ActuatorSeeder extends Seeder
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' =>  Carbon::now()->format('Y-m-d H:i:s')
             ],
+            [
+                'name' => 'fire_sprinkler',
+                'slug' => 'Fire Sprinkler',
+                'region_id' => 8,
+                'value' => 0,
+                'unit' => 'off_on',
+                'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' =>  Carbon::now()->format('Y-m-d H:i:s')
+            ],
         ];
 
         Actuator::insert($actuators);

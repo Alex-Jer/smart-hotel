@@ -1,3 +1,6 @@
+# This script shows the user a menu with multiple actuators
+# When the corresponding key is pressed, the actuator is toggled (ON / OFF ; Open / Closed)
+
 from msvcrt import getch, kbhit
 
 from requests import get, post

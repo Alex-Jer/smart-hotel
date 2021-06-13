@@ -21,7 +21,6 @@ class ActuatorController extends Controller
         if (!$request->name || !$request->region_name)
             return response('ERROR: Invalid parameters! Must contain [name] [region_name]', 400);
 
-
         // Equals to true if the region exists and has a number (e.g. Room 3)
         $exists = DB::table('regions')
             ->where('name', $request->region_name)

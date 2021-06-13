@@ -115,9 +115,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         }
         return view('dashboard/camera', compact('regions', 'images'));
     })->name('camera');
+
+    Route::get('/register', function () {
+        return view('auth/register');
+    })->name('register');
 });
-
-
-Route::get('/register', function () {
-    return view('auth/register');
-})->name('register');

@@ -5,7 +5,7 @@
                 <div class="container mx-auto">
             @endif
             <div class="content-center">
-                <span>{{ str_replace('_', ':', Str::limit($image->getFilename(), 19, '')) }}</span>
+                <span class="dark:text-white">{{ str_replace('_', ':', Str::limit($image->getFilename(), 19, '')) }}</span>
                 <img src="{{ '/storage/parking/' . $image->getFilename() }}" alt="">
             </div>
             @if (($loop->index + 1) % 3 == 0)
