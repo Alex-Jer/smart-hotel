@@ -7,9 +7,28 @@ Autores:
 
 ## Índice
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Índice](#índice)
+- [Propósito](#propósito)
+- [Instalação e Utilização](#instalação-e-utilização)
+
+<!-- /code_chunk_output -->
+
 ## Propósito
 
-## Instalação
+Este projeto tem como objetivo simular um Smart Hotel (Hotel Inteligente)
+através de tecnologias IoT.  
+Através de um Dashboard feito com Laravel e Tailwind e de scripts python
+disponibilizados na pasta `/scripts`, é possível interagir com o ambiente
+virtual do Smart Hotel.
+
+## Instalação e Utilização
+
+A pasta `/docs` contém o relatório do projeto e o ambiente virtual realizado
+no Cisco Packet Tracer (.pkt).
 
 **Requisitos**:
 
