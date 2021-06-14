@@ -74,8 +74,10 @@ Autores:
     php artisan migrate:fresh --seed
     ```
 
-10. Para correr a aplicação no porto 8000 execute:
+10. Para gerar a 'key' da aplicação corra:
 
     ```sh
     php artisan key:generate
     ```
+
+11. Finalmente, aceda ao endereço `localhost` e inicie sessão com o nome de utilizador `admin@admin` e a palavra-passe `admin321`.
