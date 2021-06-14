@@ -68,7 +68,8 @@ Autores:
 
 8. Renomear o ficheiro `.env.example` para `.env`
 
-9. Para popular a base de dados com tabelas e dados execute:
+9. Para popular a base de dados com tabelas e dados execute:  
+   (Nota: responder "yes" à pergunta "Do you really wish to run this command?")
 
     ```sh
     php artisan migrate:fresh --seed

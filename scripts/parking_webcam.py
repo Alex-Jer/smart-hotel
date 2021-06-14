@@ -56,7 +56,7 @@ def upload_picture_when_open(camera):
 try:
     # Readies the camera
     camera = VideoCapture(0)
-    print("This program is responsible for taking a picture every time the parking barrier opens.")
+    print("This program takes a picture every time the parking barrier opens.")
     print("Press CTRL+C to exit the program.")
     while True:
         upload_picture_when_open(camera)
