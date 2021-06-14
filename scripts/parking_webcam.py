@@ -10,7 +10,7 @@ from requests import get, post
 
 
 def post_file(file):
-    url = "http://projeto-ti.test/api/upload"
+    url = "http://localhost/api/upload"
 
     # Opens the image
     f = open(file, "rb")
@@ -30,7 +30,7 @@ def post_file(file):
 
 
 def upload_picture_when_open(camera):
-    r = get("http://projeto-ti.test/api/actuator?name=barrier&region_name=parking")
+    r = get("http://localhost/api/actuator?name=barrier&region_name=parking")
 
     # If the GET wasn't sucessful
     if r.status_code != 200:

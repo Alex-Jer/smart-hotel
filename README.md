@@ -17,7 +17,7 @@ Autores:
 - Composer
 - MySQL 8 ou MySQL 5
 - Node.js e npm
-- Extensões PHP recomendadas:
+- Extensões PHP necessárias:
   - curl
   - fileinfo
   - gd2
