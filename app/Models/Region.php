@@ -20,7 +20,6 @@ class Region extends Model
     public function sensor()
     {
         return $this->hasMany(Sensor::class);
-        // return $this->hasMany(Sensor::class, 'foreign_key', 'local_key');
     }
 
     /**

@@ -1,3 +1,6 @@
+# This script takes a photo (webcam) every 5 seconds
+# as long as the parking barrier is open
+
 from datetime import datetime
 from os import remove
 from time import sleep
@@ -31,7 +34,6 @@ def upload_picture_when_open(camera):
 
     # If the GET wasn't sucessful
     if r.status_code != 200:
-        print("GET error!")
         return
 
     # Creates a string with the current time (e.g. "11-06-2021 19_02_26")

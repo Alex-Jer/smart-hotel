@@ -104,11 +104,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     })->name('profile');
 
     Route::get('/camera', function () {
+        // Receives every region from the databse, ordered by name and number
         $regions = Region::orderBy('name')->orderBy('number')->get();
+        // Stores the images location in a variable
         $path = public_path('storage/parking');
+        // Get all files from the path
         $images = File::allFiles($path);
+        // Checks if each image is bigger than 100kib or the file type isn't either .png or .jpg
         foreach ($images as $key => $image) {
-            // If the image is bigger than 100kib or the file type isn't either .png or .jpg
             if ($image->getSize() > 1024000 || ($image->getExtension() != 'png' && $image->getExtension() != 'jpg')) {
                 unset($images[$key]);
             }
