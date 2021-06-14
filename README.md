@@ -61,7 +61,7 @@ Autores:
 7. De seguida, para instalar as dependências necessárias, execute:
 
     ```sh
-    npm install && npm run dev
+    npm install && npm run prod
     # e depois:
     composer install
     ```
@@ -71,7 +71,7 @@ Autores:
 9. Para popular a base de dados com tabelas e dados execute:
 
     ```sh
-    php artisan migrate --seed
+    php artisan migrate:fresh --seed
     ```
 
 10. Para correr a aplicação no porto 8000 execute:
