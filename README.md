@@ -85,7 +85,7 @@ no Cisco Packet Tracer (.pkt).
     composer install
     ```
 
-8. Renomear o ficheiro `.env.example` para `.env`
+8. Renomear o ficheiro `.env.example` para `.env` e, se necessário, alterar as variáveis `DB_USERNAME` e `DB_PASSWORD`.
 
 9. Para popular a base de dados com tabelas e dados execute:  
    (Nota: responder "yes" à pergunta "Do you really wish to run this command?")
